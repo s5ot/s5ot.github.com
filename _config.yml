@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
+url: http://s5ot.github.com
+title: s5ot
 subtitle: A blogging framework for hackers.
-author: Your Name
+author: s5ot
 simple_search: http://google.com/search
 description:
 
