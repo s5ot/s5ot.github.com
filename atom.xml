@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[s5ot]]></title>
   <link href="http://s5ot.github.com/atom.xml" rel="self"/>
   <link href="http://s5ot.github.com/"/>
-  <updated>2013-01-05T23:07:50+09:00</updated>
+  <updated>2013-01-05T23:26:18+09:00</updated>
   <id>http://s5ot.github.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[s5ot]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[はじめまして]]></title>
+    <link href="http://s5ot.github.com/blog/2013/01/05/hazimemasite/"/>
+    <updated>2013-01-05T23:11:00+09:00</updated>
+    <id>http://s5ot.github.com/blog/2013/01/05/hazimemasite</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
 </feed>
