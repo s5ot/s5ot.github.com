@@ -223,7 +223,7 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/" data-via="" data-counturl="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/" data-via="s5ot" data-counturl="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/" >Tweet</a>
   
   
   
@@ -258,6 +258,51 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/s5ot">@s5ot</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 's5ot',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("s5ot", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/s5ot" class="twitter-follow-button" data-show-count="false">Follow @s5ot</a>
+  
+</section>
 
 
 
