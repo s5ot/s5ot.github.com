@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot]]></title>
   <link href="http://s5ot.github.com/atom.xml" rel="self"/>
   <link href="http://s5ot.github.com/"/>
-  <updated>2013-01-05T23:56:53+09:00</updated>
+  <updated>2013-01-06T00:07:07+09:00</updated>
   <id>http://s5ot.github.com/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -14,12 +14,105 @@
 
   
   <entry>
-    <title type="html"><![CDATA[code-snippet-sample]]></title>
+    <title type="html"><![CDATA[Code Snippet Sample]]></title>
     <link href="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/"/>
     <updated>2013-01-05T23:55:00+09:00</updated>
     <id>http://s5ot.github.com/blog/2013/01/05/code-snippet-sample</id>
     <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo make me a sandwich</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>This is sample</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sample</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">sample</span>
+</span><span class='line'>    <span class="s2">&quot;sample&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<div><script src='https://gist.github.com/1170346.js'></script>
+<noscript><pre><code>class BootstrapLinkRenderer &lt; WillPaginate::ActionView::LinkRenderer
+  def page_number(page)
+    unless page == current_page
+      tag(:li, link(page, page, :rel =&gt; rel_value(page)))
+    else
+      tag(:li, link(page, &quot;#&quot;), :class =&gt; 'active')
+    end
+  end
+
+  def link(text, target, attributes = {})
+    if target.is_a? Fixnum
+      attributes[:rel] = rel_value(target)
+      target = url(target)
+    end
+    attributes[:href] = target
+    tag(:a, text, attributes)
+  end
+
+  def html_container(html)
+    tag(:div, tag(:ul, html), container_attributes)
+  end
+
+  def previous_or_next_page(page, text, classname)
+    classname = case classname
+    when 'previous_page'
+     'prev'
+    when 'next_page'
+     'next'
+    end
+
+    if page
+      tag(:li, link(text, page), :class =&gt; classname)
+    else
+      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + ' disabled')
+    end
+  end
+end
+
+WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer'
+</code></pre></noscript></div>
+
+
+
+
+<figure class='code'><figcaption><span> (server.js)</span> <a href='http://s5ot.github.com/downloads/code/server.js'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span>  <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">});</span>
+</span><span class='line'>            <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8124</span><span class="p">,</span>  <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Server running at http://127.0.0.1:8124/&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Awesome code snippet</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Javascript Array Syntax </span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span>  <span class="nx">element1</span><span class="p">,</span>  <span class="p">...,</span>  <span class="nx">elementN</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>
