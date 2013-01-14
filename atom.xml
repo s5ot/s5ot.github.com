@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot]]></title>
   <link href="http://s5ot.github.com/atom.xml" rel="self"/>
   <link href="http://s5ot.github.com/"/>
-  <updated>2013-01-06T00:45:49+09:00</updated>
+  <updated>2013-01-14T15:20:48+09:00</updated>
   <id>http://s5ot.github.com/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,94 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[rails-compass導入に難儀した件]]></title>
+    <link href="http://s5ot.github.com/blog/2013/01/14/using-rails-compass/"/>
+    <updated>2013-01-14T14:54:00+09:00</updated>
+    <id>http://s5ot.github.com/blog/2013/01/14/using-rails-compass</id>
+    <content type="html"><![CDATA[<p>いい加減sass使わないとなと思い、どうせsass使うならcompass入れちゃおうと思いました。
+compass導入にあたり参考にしたのはこちらです。
+<a href="http://railscasts.com/episodes/334-compass-css-sprites">http://railscasts.com/episodes/334-compass-css-sprites</a></p>
+
+<p>こちらのとおりにやってサーバーを起動してアクセスしたところ、
+&#8220;File to import not found or unreadable: compass&#8221;
+のエラー。
+ググってみると、rails-compassの導入にはRailsのバージョンとかなにやらが絡んでいろんな症状が出ている模様。</p>
+
+<p><a href="https://github.com/Compass/compass-rails/issues/19">https://github.com/Compass/compass-rails/issues/19</a>
+を眺めていきますと、どうもassetsグループの中に定義しないやり方が有力のようなのでやってみました。
+結果、それでうまくいきました。</p>
+
+<figure class='code'><figcaption><span>変更前Gemfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
+</span><span class='line'>  gem 'sass-rails',    '~> 3.2.3'
+</span><span class='line'>  gem 'coffee-rails',  '~> 3.2.1'
+</span><span class='line'>
+</span><span class='line'>  # See https://github.com/sstephenson/execjs#readme for more supported
+</span><span class='line'>  runtimes
+</span><span class='line'>  # gem 'therubyracer',  :platform => :ruby
+</span><span class='line'>
+</span><span class='line'>  gem 'uglifier',  '>= 1.0.3'
+</span><span class='line'>  gem 'compass'
+</span><span class='line'>  gem 'compass-rails'
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>変更後Gemfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>gem 'sass-rails',    '~> 3.2.5'
+</span><span class='line'>gem 'coffee-rails',  '~> 3.2.1'
+</span><span class='line'>
+</span><span class='line'># See https://github.com/sstephenson/execjs#readme for more supported
+</span><span class='line'>runtimes
+</span><span class='line'># gem 'therubyracer',  :platform => :ruby
+</span><span class='line'>
+</span><span class='line'>gem 'uglifier',  '>= 1.0.3'
+</span><span class='line'>gem 'compass'
+</span><span class='line'>gem 'compass-rails'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>assetsグループとはなんなのか・・
+asset pipelineを支えるsprocketsのためのほにゃららだと思うのですが、そこから外しちゃうんだ・・ということでメモっておこうと思いました。</p>
+
+<p>ちなみにこの難儀したときの環境は
+ruby 1.9.3p362
+Rails 3.2.9
+でした。
+今現在Railsは重大なSecurity Fixがあったため3.2.10にアップデートすべきですね。
+<a href="http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/">http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Code Snippet Sample]]></title>

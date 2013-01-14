@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>s5ot</title>
+  <title>rails-compass導入に難儀した件 - s5ot</title>
   <meta name="author" content="s5ot">
 
   
@@ -20,7 +20,7 @@ http://railscasts.com/episodes/334-compass-css-sprites &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://s5ot.github.com/">
+  <link rel="canonical" href="http://s5ot.github.com/blog/2013/01/14/using-rails-compass/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -81,15 +81,12 @@ $(document).ready( function () {
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/01/14/using-rails-compass/">Rails-compass導入に難儀した件</a></h1>
+      <h1 class="entry-title">Rails-compass導入に難儀した件</h1>
     
     
       <p class="meta">
@@ -112,7 +109,7 @@ $(document).ready( function () {
   </header>
 
 
-  <div class="entry-content"><p>いい加減sass使わないとなと思い、どうせsass使うならcompass入れちゃおうと思いました。
+<div class="entry-content"><p>いい加減sass使わないとなと思い、どうせsass使うならcompass入れちゃおうと思いました。
 compass導入にあたり参考にしたのはこちらです。
 <a href="http://railscasts.com/episodes/334-compass-css-sprites">http://railscasts.com/episodes/334-compass-css-sprites</a></p>
 
@@ -193,153 +190,16 @@ Rails 3.2.9
 今現在Railsは重大なSecurity Fixがあったため3.2.10にアップデートすべきですね。
 <a href="http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/">http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/</a></p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/05/code-snippet-sample/">Code Snippet Sample</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">s5ot</span></span>
 
-<time datetime="2013-01-05T23:55:00+09:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo make me a sandwich</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>This is sample</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sample</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">sample</span>
-</span><span class='line'>    <span class="s2">&quot;sample&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<div><script src='https://gist.github.com/1170346.js'></script>
-<noscript><pre><code>class BootstrapLinkRenderer &lt; WillPaginate::ActionView::LinkRenderer
-  def page_number(page)
-    unless page == current_page
-      tag(:li, link(page, page, :rel =&gt; rel_value(page)))
-    else
-      tag(:li, link(page, &quot;#&quot;), :class =&gt; 'active')
-    end
-  end
-
-  def link(text, target, attributes = {})
-    if target.is_a? Fixnum
-      attributes[:rel] = rel_value(target)
-      target = url(target)
-    end
-    attributes[:href] = target
-    tag(:a, text, attributes)
-  end
-
-  def html_container(html)
-    tag(:div, tag(:ul, html), container_attributes)
-  end
-
-  def previous_or_next_page(page, text, classname)
-    classname = case classname
-    when 'previous_page'
-     'prev'
-    when 'next_page'
-     'next'
-    end
-
-    if page
-      tag(:li, link(text, page), :class =&gt; classname)
-    else
-      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + ' disabled')
-    end
-  end
-end
-
-WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer'
-</code></pre></noscript></div>
-
-
-
-
-<figure class='code'><figcaption><span> (server.js)</span> <a href='/downloads/code/server.js'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span>  <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">});</span>
-</span><span class='line'>            <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
-</span><span class='line'>            <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8124</span><span class="p">,</span>  <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Server running at http://127.0.0.1:8124/&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Awesome code snippet</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Javascript Array Syntax </span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span>  <span class="nx">element1</span><span class="p">,</span>  <span class="p">...,</span>  <span class="nx">elementN</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/05/hazimemasite/">はじめまして</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -351,27 +211,38 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
   
 
 
-<time datetime="2013-01-05T23:11:00+09:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
-        
-      </p>
+<time datetime="2013-01-14T14:54:00+09:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+      
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content">
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://s5ot.github.com/blog/2013/01/14/using-rails-compass/" data-via="s5ot" data-counturl="http://s5ot.github.com/blog/2013/01/14/using-rails-compass/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/01/05/code-snippet-sample/" title="Previous Post: Code Snippet Sample">&laquo; Code Snippet Sample</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -396,7 +267,7 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/s5ot">@s5ot</a> on GitHub
@@ -426,7 +297,7 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -446,6 +317,7 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -460,7 +332,10 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
       var disqus_shortname = 's5ot';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://s5ot.github.com/blog/2013/01/14/using-rails-compass/';
+        var disqus_url = 'http://s5ot.github.com/blog/2013/01/14/using-rails-compass/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
