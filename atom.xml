@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.com/atom.xml" rel="self"/>
   <link href="http://s5ot.github.com/"/>
-  <updated>2013-01-14T16:21:58+09:00</updated>
+  <updated>2013-02-24T19:52:31+09:00</updated>
   <id>http://s5ot.github.com/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kindle PaperwhiteがWiFiに接続できないとき]]></title>
+    <link href="http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/"/>
+    <updated>2013-02-24T16:59:00+09:00</updated>
+    <id>http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi</id>
+    <content type="html"><![CDATA[<p>Kindle Paperwhiteを去年11月に購入して使っていたのですが、最近になって充電してください表示から画面が動かなくなってしまいました。
+Amazonサポートに連絡すると、すぐに新しいものを送りますとのことで、2日後には新しいKindle Paperwhiteが届きました。</p>
+
+<p>さっそくセットアップしていると、WiFiに接続できないエラーが。
+これは1台目のときも同じことがありました。なのでメモしておきます。
+（ちなみに自宅ではAppleのTimeCapsuleを無線ルーターに使っています）</p>
+
+<p>WiFiネットワークの詳細を選んで、手動で設定します。
+接続タイプに「スタティック」を選択します。
+該当のWiFiネットワークに接続できているPCやスマホのネットワーク設定を参考にして</p>
+
+<ul>
+<li>IPアドレス</li>
+<li>サブネットマスク</li>
+<li>ルータ</li>
+<li>DNS</li>
+</ul>
+
+
+<p>の設定をそれぞれ入力します。
+IPアドレスは他の機器とかぶらないようにします。（192.168.1.xのxを9とかにして）</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[rails-compass導入に難儀した件]]></title>

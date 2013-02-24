@@ -5,18 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Code Snippet Sample - s5ot.send(:blog)</title>
+  <title>Kindle PaperwhiteがWiFiに接続できないとき - s5ot.send(:blog)</title>
   <meta name="author" content="s5ot">
 
   
-  <meta name="description" content="1
-$ sudo make me a sandwich This is sample1
-2
-3
-4
-5
-class Sample def sample &quot;sample&quot; end
-end class BootstrapLinkRenderer &lt; WillPaginate &hellip;">
+  <meta name="description" content="Kindle Paperwhiteを去年11月に購入して使っていたのですが、最近になって充電してください表示から画面が動かなくなってしまいました。
+Amazonサポートに連絡すると、すぐに新しいものを送りますとのことで、2日後には新しいKindle Paperwhiteが届きました。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -25,7 +19,7 @@ end class BootstrapLinkRenderer &lt; WillPaginate &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/">
+  <link rel="canonical" href="http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -89,7 +83,7 @@ $(document).ready( function () {
   
   <header>
     
-      <h1 class="entry-title">Code Snippet Sample</h1>
+      <h1 class="entry-title">Kindle PaperwhiteがWiFiに接続できないとき</h1>
     
     
       <p class="meta">
@@ -105,109 +99,34 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-01-05T23:55:00+09:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
+<time datetime="2013-02-24T16:59:00+09:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo make me a sandwich</span></code></pre></td></tr></table></div></figure>
+<div class="entry-content"><p>Kindle Paperwhiteを去年11月に購入して使っていたのですが、最近になって充電してください表示から画面が動かなくなってしまいました。
+Amazonサポートに連絡すると、すぐに新しいものを送りますとのことで、2日後には新しいKindle Paperwhiteが届きました。</p>
+
+<p>さっそくセットアップしていると、WiFiに接続できないエラーが。
+これは1台目のときも同じことがありました。なのでメモしておきます。
+（ちなみに自宅ではAppleのTimeCapsuleを無線ルーターに使っています）</p>
+
+<p>WiFiネットワークの詳細を選んで、手動で設定します。
+接続タイプに「スタティック」を選択します。
+該当のWiFiネットワークに接続できているPCやスマホのネットワーク設定を参考にして</p>
+
+<ul>
+<li>IPアドレス</li>
+<li>サブネットマスク</li>
+<li>ルータ</li>
+<li>DNS</li>
+</ul>
 
 
-
-
-<figure class='code'><figcaption><span>This is sample</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sample</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">sample</span>
-</span><span class='line'>    <span class="s2">&quot;sample&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<div><script src='https://gist.github.com/1170346.js'></script>
-<noscript><pre><code>class BootstrapLinkRenderer &lt; WillPaginate::ActionView::LinkRenderer
-  def page_number(page)
-    unless page == current_page
-      tag(:li, link(page, page, :rel =&gt; rel_value(page)))
-    else
-      tag(:li, link(page, &quot;#&quot;), :class =&gt; 'active')
-    end
-  end
-
-  def link(text, target, attributes = {})
-    if target.is_a? Fixnum
-      attributes[:rel] = rel_value(target)
-      target = url(target)
-    end
-    attributes[:href] = target
-    tag(:a, text, attributes)
-  end
-
-  def html_container(html)
-    tag(:div, tag(:ul, html), container_attributes)
-  end
-
-  def previous_or_next_page(page, text, classname)
-    classname = case classname
-    when 'previous_page'
-     'prev'
-    when 'next_page'
-     'next'
-    end
-
-    if page
-      tag(:li, link(text, page), :class =&gt; classname)
-    else
-      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + ' disabled')
-    end
-  end
-end
-
-WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer'
-</code></pre></noscript></div>
-
-
-
-
-<figure class='code'><figcaption><span> (server.js)</span> <a href='/downloads/code/server.js'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span>  <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">});</span>
-</span><span class='line'>            <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
-</span><span class='line'>            <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8124</span><span class="p">,</span>  <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Server running at http://127.0.0.1:8124/&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Awesome code snippet</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Javascript Array Syntax </span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span>  <span class="nx">element1</span><span class="p">,</span>  <span class="p">...,</span>  <span class="nx">elementN</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
+<p>の設定をそれぞれ入力します。
+IPアドレスは他の機器とかぶらないようにします。（192.168.1.xのxを9とかにして）</p>
 </div>
 
 
@@ -230,7 +149,7 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
   
 
 
-<time datetime="2013-01-05T23:55:00+09:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
+<time datetime="2013-02-24T16:59:00+09:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
       
 
 
@@ -238,7 +157,7 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/" data-via="s5ot" data-counturl="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/" data-via="s5ot" data-counturl="http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/" >Tweet</a>
   
   
   
@@ -247,10 +166,8 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/01/05/hazimemasite/" title="Previous Post: はじめまして">&laquo; はじめまして</a>
+        <a class="basic-alignment left" href="/blog/2013/01/14/using-rails-compass/" title="Previous Post: rails-compass導入に難儀した件">&laquo; rails-compass導入に難儀した件</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/01/14/using-rails-compass/" title="Next Post: rails-compass導入に難儀した件">rails-compass導入に難儀した件 &raquo;</a>
       
     </p>
   </footer>
@@ -395,8 +312,8 @@ container.html('<img class="left" src="http://api.twitter.com/1/users/profile_im
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/';
-        var disqus_url = 'http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/';
+        var disqus_identifier = 'http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/';
+        var disqus_url = 'http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/';
         var disqus_script = 'embed.js';
       
     (function () {
