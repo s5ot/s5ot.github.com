@@ -1,433 +1,127 @@
 
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>s5ot.send(:blog)</title>
-  <meta name="author" content="s5ot">
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
 
-  
-  <meta name="description" content="Kindle Paperwhiteを去年11月に購入して使っていたのですが、最近になって充電してください表示から画面が動かなくなってしまいました。
-Amazonサポートに連絡すると、すぐに新しいものを送りますとのことで、2日後には新しいKindle Paperwhiteが届きました。 &hellip;">
-  
+<meta charset="utf-8">
+<title>s5ot.send(:blog)</title>
+<meta name="author" content="s5ot">
+<meta name="description"
+      content="最近のブログ投稿 Kindle PaperwhiteがWiFiに接続できないとき （Feb 24th, 2013） rails-compass導入に難儀した件 （Jan 14th, 2013） Code Snippet Sample （Jan 5th, 2013） はじめまして （Jan 5th &hellip;">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
-  <link rel="canonical" href="http://s5ot.github.com/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="s5ot.send(:blog)" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<script language="JavaScript">
-$(document).ready( function () {
-           $("a[href^='http']:not([href*='" + location.hostname + "'])").attr('target',  '_blank');
-           })
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://s5ot.github.com">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="s5ot.send(:blog)"
+      type="application/atom+xml">
+
+<style type="text/css">
+  header[role="banner"] hgroup h1 {
+    /* font-size: 180% */
+    color: #999;
+  }
+</style>
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37441932-1']);
+  _gaq.push(['_trackPageview']);  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+      '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
 </script>
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37441932-1']);
-    _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
 
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
+      <header role="banner" class="site_metas">
+	<!-- include header -->
+	
+<hgroup>
   <h1><a href="/">s5ot.send(:blog)</a></h1>
   
 </hgroup>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:s5ot.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
+	<!-- /include -->
+        <!-- include social_service_links -->
+	
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+        <!-- /include -->
+      </header>
+
+      <div id="content">
+	<!-- content -->
+	<div id="page">
+  <div id="top">
+
+  <div id="recent_posts">
+    <h2>最近のブログ投稿</h2>
+
+    <ul>
     
-      <h1 class="entry-title"><a href="/blog/2013/02/24/kindle-paperwhite-cant-wifi/">Kindle PaperwhiteがWiFiに接続できないとき</a></h1>
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2013/02/24/kindle-paperwhite-cant-wifi/">Kindle PaperwhiteがWiFiに接続できないとき</a>
+          （<time datetime="2013-02-24 16:59:00 +0900" pubdate>Feb 24<span>th</span>, 2013</time>）
+        </article>
+      </li>
     
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2013/01/14/using-rails-compass/">rails-compass導入に難儀した件</a>
+          （<time datetime="2013-01-14 14:54:00 +0900" pubdate>Jan 14<span>th</span>, 2013</time>）
+        </article>
+      </li>
     
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-24T16:59:00+09:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
-        
-      </p>
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2013/01/05/code-snippet-sample/">Code Snippet Sample</a>
+          （<time datetime="2013-01-05 23:55:00 +0900" pubdate>Jan 5<span>th</span>, 2013</time>）
+        </article>
+      </li>
     
-  </header>
-
-
-  <div class="entry-content"><p>Kindle Paperwhiteを去年11月に購入して使っていたのですが、最近になって充電してください表示から画面が動かなくなってしまいました。
-Amazonサポートに連絡すると、すぐに新しいものを送りますとのことで、2日後には新しいKindle Paperwhiteが届きました。</p>
-
-<p>さっそくセットアップしていると、WiFiに接続できないエラーが。
-これは1台目のときも同じことがありました。なのでメモしておきます。
-（ちなみに自宅ではAppleのTimeCapsuleを無線ルーターに使っています）</p>
-
-<p>WiFiネットワークの詳細を選んで、手動で設定します。
-接続タイプに「スタティック」を選択します。
-該当のWiFiネットワークに接続できているPCやスマホのネットワーク設定を参考にして</p>
-
-<ul>
-<li>IPアドレス</li>
-<li>サブネットマスク</li>
-<li>ルータ</li>
-<li>DNS</li>
-</ul>
-
-
-<p>の設定をそれぞれ入力します。
-IPアドレスは他の機器とかぶらないようにします。（192.168.1.xのxを9とかにして）</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2013/01/05/hazimemasite/">はじめまして</a>
+          （<time datetime="2013-01-05 23:11:00 +0900" pubdate>Jan 5<span>th</span>, 2013</time>）
+        </article>
+      </li>
     
-      <h1 class="entry-title"><a href="/blog/2013/01/14/using-rails-compass/">Rails-compass導入に難儀した件</a></h1>
-    
-    
-      <p class="meta">
-        
+    </ul>
 
+    <p><a href="/blog/archives">&laquo; 過去の記事</a></p>
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-14T14:54:00+09:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>いい加減sass使わないとなと思い、どうせsass使うならcompass入れちゃおうと思いました。
-compass導入にあたり参考にしたのはこちらです。
-<a href="http://railscasts.com/episodes/334-compass-css-sprites">http://railscasts.com/episodes/334-compass-css-sprites</a></p>
-
-<p>こちらのとおりにやってサーバーを起動してアクセスしたところ、
-&#8220;File to import not found or unreadable: compass&#8221;
-のエラー。
-ググってみると、rails-compassの導入にはRailsのバージョンとかなにやらが絡んでいろんな症状が出ている模様。</p>
-
-<p><a href="https://github.com/Compass/compass-rails/issues/19">https://github.com/Compass/compass-rails/issues/19</a>
-を眺めていきますと、どうもassetsグループの中に定義しないやり方が有力のようなのでやってみました。
-結果、それでうまくいきました。</p>
-
-<figure class='code'><figcaption><span>変更前Gemfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
-</span><span class='line'>  gem 'sass-rails',    '~> 3.2.3'
-</span><span class='line'>  gem 'coffee-rails',  '~> 3.2.1'
-</span><span class='line'>
-</span><span class='line'>  # See https://github.com/sstephenson/execjs#readme for more supported
-</span><span class='line'>  runtimes
-</span><span class='line'>  # gem 'therubyracer',  :platform => :ruby
-</span><span class='line'>
-</span><span class='line'>  gem 'uglifier',  '>= 1.0.3'
-</span><span class='line'>  gem 'compass'
-</span><span class='line'>  gem 'compass-rails'
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>変更後Gemfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>gem 'sass-rails',    '~> 3.2.5'
-</span><span class='line'>gem 'coffee-rails',  '~> 3.2.1'
-</span><span class='line'>
-</span><span class='line'># See https://github.com/sstephenson/execjs#readme for more supported
-</span><span class='line'>runtimes
-</span><span class='line'># gem 'therubyracer',  :platform => :ruby
-</span><span class='line'>
-</span><span class='line'>gem 'uglifier',  '>= 1.0.3'
-</span><span class='line'>gem 'compass'
-</span><span class='line'>gem 'compass-rails'</span></code></pre></td></tr></table></div></figure>
-
-
-<p>assetsグループとはなんなのか・・
-asset pipelineを支えるsprocketsのためのほにゃららだと思うのですが、そこから外しちゃうんだ・・ということでメモっておこうと思いました。</p>
-
-<p>ちなみにこの難儀したときの環境は
-ruby 1.9.3p362
-Rails 3.2.9
-でした。
-今現在Railsは重大なSecurity Fixがあったため3.2.10にアップデートすべきですね。
-<a href="http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/">http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/05/code-snippet-sample/">Code Snippet Sample</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-05T23:55:00+09:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo make me a sandwich</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>This is sample</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sample</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">sample</span>
-</span><span class='line'>    <span class="s2">&quot;sample&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<div><script src='https://gist.github.com/1170346.js'></script>
-<noscript><pre><code>class BootstrapLinkRenderer &lt; WillPaginate::ActionView::LinkRenderer
-  def page_number(page)
-    unless page == current_page
-      tag(:li, link(page, page, :rel =&gt; rel_value(page)))
-    else
-      tag(:li, link(page, &quot;#&quot;), :class =&gt; 'active')
-    end
-  end
-
-  def link(text, target, attributes = {})
-    if target.is_a? Fixnum
-      attributes[:rel] = rel_value(target)
-      target = url(target)
-    end
-    attributes[:href] = target
-    tag(:a, text, attributes)
-  end
-
-  def html_container(html)
-    tag(:div, tag(:ul, html), container_attributes)
-  end
-
-  def previous_or_next_page(page, text, classname)
-    classname = case classname
-    when 'previous_page'
-     'prev'
-    when 'next_page'
-     'next'
-    end
-
-    if page
-      tag(:li, link(text, page), :class =&gt; classname)
-    else
-      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + ' disabled')
-    end
-  end
-end
-
-WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer'
-</code></pre></noscript></div>
-
-
-
-
-<figure class='code'><figcaption><span> (server.js)</span> <a href='/downloads/code/server.js'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span>  <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">});</span>
-</span><span class='line'>            <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
-</span><span class='line'>            <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8124</span><span class="p">,</span>  <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Server running at http://127.0.0.1:8124/&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Awesome code snippet</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Javascript Array Syntax </span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span>  <span class="nx">element1</span><span class="p">,</span>  <span class="p">...,</span>  <span class="nx">elementN</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/05/hazimemasite/">はじめまして</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-05T23:11:00+09:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
   </div>
-</div>
-<aside class="sidebar">
+
+
+  <!-- include asides.html -->
   
-    
+  
 <section>
 <h1>About Me</h1>
 <div id="twitter-profile" style="margin-top:0.5em;">
@@ -487,13 +181,18 @@ container.html('<img class="left" src="http://api.twitter.com/1/users/profile_im
   </ul>
 </section>
 
+
 <section>
-  <h1>GitHub Repos</h1>
+  <h2>
+    Git リポジトリ
+    &mdash;
+    <a href="https://github.com/s5ot">GitHub</a>
+  </h2>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">読込中 &#8230;</li>
   </ul>
   
-  <a href="https://github.com/s5ot">@s5ot</a> on GitHub
+  <a href="https://github.com/s5ot">@s5ot</a> on Github
   
   <script type="text/javascript">
     $.domReady(function(){
@@ -509,6 +208,9 @@ container.html('<img class="left" src="http://api.twitter.com/1/users/profile_im
             user: 's5ot',
             count: 0,
             skip_forks: true,
+            type: '',
+            sort: '',
+            direction: '',
             target: '#gh_repos'
         });
     });
@@ -517,10 +219,15 @@ container.html('<img class="left" src="http://api.twitter.com/1/users/profile_im
 </section>
 
 
+
 <section>
-  <h1>Latest Tweets</h1>
+  <h2>
+    最近のつぶやき 
+    &mdash;
+    <a href="http://twitter.com/s5ot">twitter</a>
+  </h2>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">読込中 &#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -529,7 +236,7 @@ container.html('<img class="left" src="http://api.twitter.com/1/users/profile_im
   </script>
   <script src="/javascripts/twitter.js" type="text/javascript"> </script>
   
-    <a href="http://twitter.com/s5ot" class="twitter-follow-button" data-show-count="false">Follow @s5ot</a>
+    <a href="http://twitter.com/s5ot" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @s5ot</a>
   
 </section>
 
@@ -537,24 +244,36 @@ container.html('<img class="left" src="http://api.twitter.com/1/users/profile_im
 
 
 
-  
-</aside>
 
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
+
+
+  <!-- /include asides.html -->
+
+</div>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
   Copyright &copy; 2013 - s5ot -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
-</footer>
-  
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
 
 <script type="text/javascript">
       var disqus_shortname = 's5ot';
       
-        
-        var disqus_script = 'count.js';
+	
+	var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -582,6 +301,8 @@ container.html('<img class="left" src="http://api.twitter.com/1/users/profile_im
 
 
 
+      <!-- /include -->
 
-</body>
+    </div>
+  </body>
 </html>
