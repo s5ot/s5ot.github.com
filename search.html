@@ -3,11 +3,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Kindle PaperwhiteがWiFiに接続できないとき - s5ot.send(:blog)</title>
+	<title>s5ot.send(:blog)</title>
     <meta name="author" content="s5ot">
     
-	<meta name="description" content="Kindle Paperwhiteを去年11月に購入して使っていたのですが、最近になって充電してください表示から画面が動かなくなってしまいました。
-Amazonサポートに連絡すると、すぐに新しいものを送りますとのことで、2日後には新しいKindle Paperwhiteが届きました。 &hellip;">
+	<meta name="description" content="Search Results $('#search_results').tapir({ 'token': '', 'complete' : function() { document.getElementById('search_loading').style.display="none &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -87,55 +86,22 @@ Amazonサポートに連絡すると、すぐに新しいものを送ります�
 <div id="toload">
 <!-- begin toload --> 
     <div id="content" class="inner">
-        <article class="post">
-	<h2 class="title">Kindle PaperwhiteがWiFiに接続できないとき</h2>
-	<div class="entry-content"><p>Kindle Paperwhiteを去年11月に購入して使っていたのですが、最近になって充電してください表示から画面が動かなくなってしまいました。
-Amazonサポートに連絡すると、すぐに新しいものを送りますとのことで、2日後には新しいKindle Paperwhiteが届きました。</p>
-
-<p>さっそくセットアップしていると、WiFiに接続できないエラーが。
-これは1台目のときも同じことがありました。なのでメモしておきます。
-（ちなみに自宅ではAppleのTimeCapsuleを無線ルーターに使っています）</p>
-
-<p>WiFiネットワークの詳細を選んで、手動で設定します。
-接続タイプに「スタティック」を選択します。
-該当のWiFiネットワークに接続できているPCやスマホのネットワーク設定を参考にして</p>
-
-<ul>
-<li>IPアドレス</li>
-<li>サブネットマスク</li>
-<li>ルータ</li>
-<li>DNS</li>
-</ul>
-
-
-<p>の設定をそれぞれ入力します。
-IPアドレスは他の機器とかぶらないようにします。（192.168.1.xのxを9とかにして）</p>
+        <h1 class="entry-title"><center>Search Results</center></h1>
+<div id="search_loading" style="margin: 40px 0">
+    <center><img src="/images/loading.gif"></center>
 </div>
 
-<div class="meta">
-	
+<script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+<div id="search_results" style="display:none">
+<br>
 </div>
-</article>
+<script>
+         $('#search_results').tapir({
+             'token': '',
+             'complete' : function() { document.getElementById('search_loading').style.display="none"; }
+         });
+</script>
 
-	<div class="share">
-	<div class="addthis_toolbox addthis_default_style ">
-	
-	
-	<a class="addthis_button_tweet"></a>
-	
-	
-	<a class="addthis_counter addthis_pill_style"></a>
-	</div>
-  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
-</div>
-
-
-
-<section id="comment">
-    <h2 class="title">Comments</h2>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-</section>
 
     </div>
     <footer id="footer">
@@ -162,10 +128,7 @@ IPアドレスは他の機器とかぶらないようにします。（192.168.1
       var disqus_shortname = 's5ot';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/';
-        var disqus_url = 'http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

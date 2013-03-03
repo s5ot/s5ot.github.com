@@ -1,94 +1,101 @@
 
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <!-- include head -->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Code Snippet Sample - s5ot.send(:blog)</title>
+    <meta name="author" content="s5ot">
     
-
-<meta charset="utf-8">
-<title>Code Snippet Sample - s5ot.send(:blog)</title>
-<meta name="author" content="s5ot">
-<meta name="description"
-      content="Code Snippet Sample 1
+	<meta name="description" content="1
 $ sudo make me a sandwich This is sample1
 2
 3
 4
 5
 class Sample def sample &quot;sample&quot; end
-end class &hellip;">
-
-
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="canonical" href="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="s5ot.send(:blog)"
-      type="application/atom+xml">
-
-
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
-
-
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-37441932-1']);
-  _gaq.push(['_trackPageview']);  
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
-      '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
+end class BootstrapLinkRenderer &lt; WillPaginate &hellip;">
 	
-<hgroup>
-  <h1><a href="/">s5ot.send(:blog)</a></h1>
-  
-</hgroup>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
+	<link href="/atom.xml" rel="alternate" title="s5ot.send(:blog)" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 
-        <!-- /include -->
-      </header>
+    <link href='http://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-      <div id="content">
-	<!-- content -->
-	
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
 
-  
-
-
-<article class="entry" role="article">
-
-  <header>
-    <h2 class="entry_title">Code Snippet Sample</h2>
+    <!-- remove or comment it to disable ajaxification -->   
+    <script src="/javascripts/ajaxify.js"></script>
+   
     
-  </header>
+</head>
 
-  <div class="entry_content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        s5ot
+    </div>
+</h1>
+<br>
+
+<ul id="social-links" style="text-align:center">
+  
+  <!-- GitHub -->
+  <li>
+  <a href="https://github.com/s5ot" class="github" title="Github"></a>
+  </li>
+  
+  
+  
+  
+  <!-- Twitter -->
+  <li>
+  <a href="http://www.twitter.com/s5ot" class="twitter" title="Twitter"></a>
+  </li>
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/blog/archives/index.html">Archives</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form method="get" action="/search.html" id="search">
+            <input name="query" type="text" placeholder="Search..." x-webkit-speech />
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload --> 
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">Code Snippet Sample</h2>
+	<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo make me a sandwich</span></code></pre></td></tr></table></div></figure>
 
 
@@ -186,80 +193,60 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
 
 </div>
 
-  <footer>
-    <p class="meta">
-
-      
-
-      
-      <time datetime="2013-01-05 23:55:00 +0900" pubdate>Jan 5<span>th</span>, 2013</time>
-      
-
-      
-      <span class="categories">
+<div class="meta">
 	
-      </span>
-      
+</div>
+</article>
 
-    </p>
-
-    
-    <div class="sharing">
-
-      
-      <a href="http://twitter.com/share"
-	 class="twitter-share-button"
-	 data-url="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/"
-	 data-via="s5ot"
-	 data-counturl="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/" >Tweet</a>
-      
-
-      
-
-      
-    </div>
-    
-
-    
-    <section>
-      <h3 id="comments">Comments</h3>
-      <div id="disqus_thread" aria-live="polite">
-	<noscript>
-	  Javascript を有効にしないとコメントを見ることができません。
-	  (<a href="http://disqus.com/?ref_noscript">Disqus</a>)
-	</noscript>
-      </div>
-    </section>
-    
-
-  </footer>
-  
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
 </div>
 
-	<!-- /content -->
-      </div>
 
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2013 - s5ot -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
 
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2013
+
+    s5ot
+. Powered by <a href="http://octopress.org">Octopress</a> | 
+    Theme <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
 
 <script type="text/javascript">
       var disqus_shortname = 's5ot';
       
-	
-	// var disqus_developer = 1;
-	var disqus_identifier = 'http://s5ot.github.com/blog/2013/01/05/code-snippet-sample';
-	var disqus_url = 'http://s5ot.github.com/blog/2013/01/05/code-snippet-sample';
-	var disqus_script = 'embed.js';
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/';
+        var disqus_url = 'http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -270,25 +257,30 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
 
 
 
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37441932-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 
 
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
-
-
-
-      <!-- /include -->
-
-    </div>
-  </body>
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
 </html>
