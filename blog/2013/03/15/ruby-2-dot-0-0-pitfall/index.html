@@ -1,0 +1,249 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ruby2.0にアップグレードしてつまづいたこと - s5ot.send(:blog)</title>
+	<meta name="author" content="s5ot">
+
+	
+	<meta name="description" content="Ruby 1.9.3 / Rails 3.2.x で開発しています。 このたびRuby 2.0がめでたくリリースされたのでアップグレードしてみました。 で、ちょいちょいつまづいたのでメモしておきます。 つまづき：RVM on Mac OS Xでインストールエラー まずRuby2. &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="s5ot.send(:blog)" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+  <header id="header" class="inner"><h1><a href="/">s5ot.send(:blog)</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:s5ot.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/s5ot" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/s5ot" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:s5ot.github.com">
+	</form>
+</nav>
+
+</header>
+  
+  
+  <div id="content" class="inner"><article class="post">
+	<h2 class="title">Ruby2.0にアップグレードしてつまづいたこと</h2>
+	<div class="entry-content"><p>Ruby 1.9.3 / Rails 3.2.x で開発しています。</p>
+
+<p>このたびRuby 2.0がめでたくリリースされたのでアップグレードしてみました。</p>
+
+<p>で、ちょいちょいつまづいたのでメモしておきます。</p>
+
+<h3>つまづき：RVM on Mac OS Xでインストールエラー</h3>
+
+<p>まずRuby2.0のインストールにつまづきました。
+ビルドでopensslがほにゃららのエラーがでてこけました。</p>
+
+<h3>対策： 下記のとおり。</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew update
+</span><span class='line'>$ brew install openssl
+</span><span class='line'>$ rvm get head
+</span><span class='line'>$ rvm install ruby-2.0.0 --skip-openssl --with-opt-dir="`brew --prefix openssl`"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(参考）
+<a href="https://gist.github.com/jfirebaugh/4007524">Installing Ruby 2.0.0-preview1 with RVM on OS X</a>
+***** 　
+　
+　
+　
+　
+　
+　
+　
+　
+　</p>
+
+<h3>つまづき：iconvがない。</h3>
+
+<p>iconvが標準でついてこなくなりました。</p>
+
+<h3>対策：String#encodeで置き換える。</h3>
+
+<h3>つまづき：respond_to?の仕様が変わった。</h3>
+
+<p>protectedメソッドにrespond_to?するとfalseが返ってくるようになりました。
+私はテストがfailしたことがきっかけでこれが分かったのですが、最初はなにが悪いのかわからなくて混乱しました。</p>
+
+<h3>対策：Ruby1.9系と互換を保つにはprotected_to?の第二引数にtrueを指定する。</h3>
+
+<p>true指定でprotected/privateメソッドもrespondableになる。</p>
+
+<p>(参考）
+<a href="http://t.co/b410B9IwIv">PROTECTED METHODS AND RUBY 2.0</a></p>
+
+<h3>つまづき: PassengerのApacheモジュールがビルドできない。</h3>
+
+<p>ビルド中にこんなのを吐いて落ちます。
+cannot load such file &#8211; rubygems/builder</p>
+
+<h3>対策：Stableな3.0.19はRuby2.0に対応していないようです。</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem i passenger --pre</span></code></pre></td></tr></table></div></figure>
+
+
+<p>で4.0.0 RCのPassegerをインストールしてビルドします。
+（参考）
+<a href="https://github.com/FooBarWidget/passenger/pull/71">passenger-install-apache2-module doesn&#8217;t work on ruby 2.0</a></p>
+
+<p>あと、この4.0.0 RCのPassegerではRails.rootにconfig.ruがないとRails 1 or Rails 2と見なされて起動しません。
+こんなエラーが出ます。</p>
+
+<blockquote><p>This application is a Rails 3 application,  but it was wrongly detected as a Rails 1 or Rails 2 application.</p>
+
+<p>This is probably a bug in Phusion Passenger,  so please report it</p></blockquote>
+
+<p>なのでconfig.ruをお忘れなく。</p>
+
+<p>（参考）
+<a href="https://code.google.com/p/phusion-passenger/issues/detail?id=807">Passenger 3.9.1.beta incorrectly detects Redmine 2.2.1 as Rails 1/2 app</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-15T14:39:00+09:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+  <footer id="footer" class="inner">Copyright &copy; 2013
+
+    s5ot
+
+</footer>
+  <script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 's5ot';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://s5ot.github.com/blog/2013/03/15/ruby-2-dot-0-0-pitfall/';
+        var disqus_url = 'http://s5ot.github.com/blog/2013/03/15/ruby-2-dot-0-0-pitfall/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37441932-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

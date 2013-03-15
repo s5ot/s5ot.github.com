@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.com/atom.xml" rel="self"/>
   <link href="http://s5ot.github.com/"/>
-  <updated>2013-03-04T00:56:01+09:00</updated>
+  <updated>2013-03-15T15:20:47+09:00</updated>
   <id>http://s5ot.github.com/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,94 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby2.0にアップグレードしてつまづいたこと]]></title>
+    <link href="http://s5ot.github.com/blog/2013/03/15/ruby-2-dot-0-0-pitfall/"/>
+    <updated>2013-03-15T14:39:00+09:00</updated>
+    <id>http://s5ot.github.com/blog/2013/03/15/ruby-2-dot-0-0-pitfall</id>
+    <content type="html"><![CDATA[<p>Ruby 1.9.3 / Rails 3.2.x で開発しています。</p>
+
+<p>このたびRuby 2.0がめでたくリリースされたのでアップグレードしてみました。</p>
+
+<p>で、ちょいちょいつまづいたのでメモしておきます。</p>
+
+<h3>つまづき：RVM on Mac OS Xでインストールエラー</h3>
+
+<p>まずRuby2.0のインストールにつまづきました。
+ビルドでopensslがほにゃららのエラーがでてこけました。</p>
+
+<h3>対策： 下記のとおり。</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew update
+</span><span class='line'>$ brew install openssl
+</span><span class='line'>$ rvm get head
+</span><span class='line'>$ rvm install ruby-2.0.0 --skip-openssl --with-opt-dir="`brew --prefix openssl`"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(参考）
+<a href="https://gist.github.com/jfirebaugh/4007524">Installing Ruby 2.0.0-preview1 with RVM on OS X</a>
+***** 　
+　
+　
+　
+　
+　
+　
+　
+　
+　</p>
+
+<h3>つまづき：iconvがない。</h3>
+
+<p>iconvが標準でついてこなくなりました。</p>
+
+<h3>対策：String#encodeで置き換える。</h3>
+
+<h3>つまづき：respond_to?の仕様が変わった。</h3>
+
+<p>protectedメソッドにrespond_to?するとfalseが返ってくるようになりました。
+私はテストがfailしたことがきっかけでこれが分かったのですが、最初はなにが悪いのかわからなくて混乱しました。</p>
+
+<h3>対策：Ruby1.9系と互換を保つにはprotected_to?の第二引数にtrueを指定する。</h3>
+
+<p>true指定でprotected/privateメソッドもrespondableになる。</p>
+
+<p>(参考）
+<a href="http://t.co/b410B9IwIv">PROTECTED METHODS AND RUBY 2.0</a></p>
+
+<h3>つまづき: PassengerのApacheモジュールがビルドできない。</h3>
+
+<p>ビルド中にこんなのを吐いて落ちます。
+cannot load such file &#8211; rubygems/builder</p>
+
+<h3>対策：Stableな3.0.19はRuby2.0に対応していないようです。</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem i passenger --pre</span></code></pre></td></tr></table></div></figure>
+
+
+<p>で4.0.0 RCのPassegerをインストールしてビルドします。
+（参考）
+<a href="https://github.com/FooBarWidget/passenger/pull/71">passenger-install-apache2-module doesn&#8217;t work on ruby 2.0</a></p>
+
+<p>あと、この4.0.0 RCのPassegerではRails.rootにconfig.ruがないとRails 1 or Rails 2と見なされて起動しません。
+こんなエラーが出ます。</p>
+
+<blockquote><p>This application is a Rails 3 application,  but it was wrongly detected as a Rails 1 or Rails 2 application.</p>
+
+<p>This is probably a bug in Phusion Passenger,  so please report it</p></blockquote>
+
+<p>なのでconfig.ruをお忘れなく。</p>
+
+<p>（参考）
+<a href="https://code.google.com/p/phusion-passenger/issues/detail?id=807">Passenger 3.9.1.beta incorrectly detects Redmine 2.2.1 as Rails 1/2 app</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Kindle PaperwhiteがWiFiに接続できないとき]]></title>
@@ -60,7 +148,7 @@ compass導入にあたり参考にしたのはこちらです。
 を眺めていきますと、どうもassetsグループの中に定義しないやり方が有力のようなのでやってみました。
 結果、それでうまくいきました。</p>
 
-<figure class='code'><figcaption><span>変更前Gemfile </span></figcaption>
+<figure class='code'><figcaption><span>変</span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -89,7 +177,7 @@ compass導入にあたり参考にしたのはこちらです。
 
 
 
-<figure class='code'><figcaption><span>変更後Gemfile </span></figcaption>
+<figure class='code'><figcaption><span>変</span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -160,7 +248,7 @@ Rails 3.2.9
     unless page == current_page
       tag(:li, link(page, page, :rel =&gt; rel_value(page)))
     else
-      tag(:li, link(page, &quot;#&quot;), :class =&gt; 'active')
+      tag(:li, link(page, &quot;#&quot;), :class =&gt; &#39;active&#39;)
     end
   end
 
@@ -179,21 +267,21 @@ Rails 3.2.9
 
   def previous_or_next_page(page, text, classname)
     classname = case classname
-    when 'previous_page'
-     'prev'
-    when 'next_page'
-     'next'
+    when &#39;previous_page&#39;
+     &#39;prev&#39;
+    when &#39;next_page&#39;
+     &#39;next&#39;
     end
 
     if page
       tag(:li, link(text, page), :class =&gt; classname)
     else
-      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + ' disabled')
+      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + &#39; disabled&#39;)
     end
   end
 end
 
-WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer'
+WillPaginate::ViewHelpers.pagination_options[:renderer] = &#39;BootstrapLinkRenderer&#39;
 </code></pre></noscript></div>
 
 
