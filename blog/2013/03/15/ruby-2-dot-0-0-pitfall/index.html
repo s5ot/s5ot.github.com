@@ -7,7 +7,7 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="Ruby 1.9.3 / Rails 3.2.x で開発しています。 このたびRuby 2.0がめでたくリリースされたのでアップグレードしてみました。 で、ちょいちょいつまづいたのでメモしておきます。 つまづき：RVM on Mac OS Xでインストールエラー まずRuby2. &hellip;">
+	<meta name="description" content="Ruby 1.9.3 / Rails 3.2.x でアプリを開発しています。 このたびRuby 2.0がめでたくリリースされたのでアップグレードしてみました。 で、ちょいちょいつまづいたことをメモしておきます。 つまづき：RVM on Mac OS Xでインストールエラー まずRuby2. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -76,11 +76,11 @@
   
   <div id="content" class="inner"><article class="post">
 	<h2 class="title">Ruby2.0にアップグレードしてつまづいたこと</h2>
-	<div class="entry-content"><p>Ruby 1.9.3 / Rails 3.2.x で開発しています。</p>
+	<div class="entry-content"><p>Ruby 1.9.3 / Rails 3.2.x でアプリを開発しています。</p>
 
 <p>このたびRuby 2.0がめでたくリリースされたのでアップグレードしてみました。</p>
 
-<p>で、ちょいちょいつまづいたのでメモしておきます。</p>
+<p>で、ちょいちょいつまづいたことをメモしておきます。</p>
 
 <h3>つまづき：RVM on Mac OS Xでインストールエラー</h3>
 
@@ -101,7 +101,6 @@
 
 <p>(参考）
 <a href="https://gist.github.com/jfirebaugh/4007524">Installing Ruby 2.0.0-preview1 with RVM on OS X</a>
-***** 　
 　
 　
 　
@@ -132,8 +131,11 @@
 
 <h3>つまづき: PassengerのApacheモジュールがビルドできない。</h3>
 
-<p>ビルド中にこんなのを吐いて落ちます。
-cannot load such file &#8211; rubygems/builder</p>
+<p>ビルド中にこんなのを吐いて落ちました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cannot load such file -- rubygems/builder</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>対策：Stableな3.0.19はRuby2.0に対応していないようです。</h3>
 
@@ -141,8 +143,9 @@ cannot load such file &#8211; rubygems/builder</p>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ gem i passenger --pre</span></code></pre></td></tr></table></div></figure>
 
 
-<p>で4.0.0 RCのPassegerをインストールしてビルドします。
-（参考）
+<p>で4.0.0 RCのPassegerをインストールしてビルドします。</p>
+
+<p>（参考）
 <a href="https://github.com/FooBarWidget/passenger/pull/71">passenger-install-apache2-module doesn&#8217;t work on ruby 2.0</a></p>
 
 <p>あと、この4.0.0 RCのPassegerではRails.rootにconfig.ruがないとRails 1 or Rails 2と見なされて起動しません。
