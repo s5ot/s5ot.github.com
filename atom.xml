@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.com/atom.xml" rel="self"/>
   <link href="http://s5ot.github.com/"/>
-  <updated>2013-03-16T14:54:12+09:00</updated>
+  <updated>2013-03-19T01:10:27+09:00</updated>
   <id>http://s5ot.github.com/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -91,7 +91,7 @@
 <a href="https://github.com/FooBarWidget/passenger/pull/71">passenger-install-apache2-module doesn&#8217;t work on ruby 2.0</a></p>
 
 <p>あと、この4.0.0 RCのPassegerではRails.rootにconfig.ruがないとRails 1 or Rails 2と見なされて起動しません。
-こんなエラーが出ます。</p>
+こんなエラーメッセージが出ました。</p>
 
 <blockquote><p>This application is a Rails 3 application,  but it was wrongly detected as a Rails 1 or Rails 2 application.</p>
 
