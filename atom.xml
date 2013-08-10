@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.com/atom.xml" rel="self"/>
   <link href="http://s5ot.github.com/"/>
-  <updated>2013-03-19T01:10:27+09:00</updated>
+  <updated>2013-08-10T18:23:52+09:00</updated>
   <id>http://s5ot.github.com/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Xcodeプロジェクトをコピーして新しいプロジェクトをつくる]]></title>
+    <link href="http://s5ot.github.com/blog/2013/08/10/copy-xcode-project/"/>
+    <updated>2013-08-10T17:40:00+09:00</updated>
+    <id>http://s5ot.github.com/blog/2013/08/10/copy-xcode-project</id>
+    <content type="html"><![CDATA[<p>既存のXcodeプロジェクトをコピーして新しいプロジェクトを作って開発する必要がありました。<br/>
+単純にファイルコピーしてもダメなんだろうなーと思ってたらやっぱりダメで、いろいろとやらないといけませんでした。<br/>
+環境はXcode4.6.3です。</p>
+
+<p>まず参考にしたのはこちらです。<br/>
+<a href="http://hocosoft.com/memo/%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E5%90%8D%E3%81%AE%E5%A4%89%E6%9B%B4/485/">Xcode4.5でiOSアプリのプロジェクト名を変更する方法</a><br/>
+ざっとやることは</p>
+
+<ul>
+<li>Identity の「Project Name」の項目を書き換える</li>
+<li>スキーム名を変更する</li>
+<li>グループ名を変更する</li>
+<li>プロジェクト名を選択して[Build Settings]から古いプロジェクト名を新しいプロジェクト名に書き換える</li>
+</ul>
+
+
+<p>で、これで基本的に完了な感じですが、自分の場合はARCがらみのエラーがたくさん出てきました。<br/>
+これはプロジェクトのコピーではソースコードファイルのCompiler flagsは移行されないことが原因でした。<br/>
+元プロジェクトのCompiler flagsの設定を新プロジェクトに設定して解消。</p>
+
+<p>さらにこのあとにplistの警告が出てきました。<br/>
+これには下記のとおりCopy Bundle Resoucesからplistをいったん取り除いてから再ビルドで解決しました。<br/>
+<a href="http://cheesememo.blog39.fc2.com/blog-entry-564.html">he Copy Bundle Resources build phase contains this target&#8217;s Info.plist file …</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby2.0にアップグレードしてつまづいたこと]]></title>
@@ -151,7 +182,7 @@ compass導入にあたり参考にしたのはこちらです。
 を眺めていきますと、どうもassetsグループの中に定義しないやり方が有力のようなのでやってみました。
 結果、それでうまくいきました。</p>
 
-<figure class='code'><figcaption><span>変</span></figcaption>
+<figure class='code'><figcaption><span>変更前Gemfile </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -180,7 +211,7 @@ compass導入にあたり参考にしたのはこちらです。
 
 
 
-<figure class='code'><figcaption><span>変</span></figcaption>
+<figure class='code'><figcaption><span>変更後Gemfile </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -251,7 +282,7 @@ Rails 3.2.9
     unless page == current_page
       tag(:li, link(page, page, :rel =&gt; rel_value(page)))
     else
-      tag(:li, link(page, &quot;#&quot;), :class =&gt; &#39;active&#39;)
+      tag(:li, link(page, &quot;#&quot;), :class =&gt; 'active')
     end
   end
 
@@ -270,21 +301,21 @@ Rails 3.2.9
 
   def previous_or_next_page(page, text, classname)
     classname = case classname
-    when &#39;previous_page&#39;
-     &#39;prev&#39;
-    when &#39;next_page&#39;
-     &#39;next&#39;
+    when 'previous_page'
+     'prev'
+    when 'next_page'
+     'next'
     end
 
     if page
       tag(:li, link(text, page), :class =&gt; classname)
     else
-      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + &#39; disabled&#39;)
+      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + ' disabled')
     end
   end
 end
 
-WillPaginate::ViewHelpers.pagination_options[:renderer] = &#39;BootstrapLinkRenderer&#39;
+WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer'
 </code></pre></noscript></div>
 
 

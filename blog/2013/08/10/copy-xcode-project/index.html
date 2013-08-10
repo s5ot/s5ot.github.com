@@ -3,11 +3,14 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Blog Archive - s5ot.send(:blog)</title>
+	<title>Xcodeプロジェクトをコピーして新しいプロジェクトをつくる - s5ot.send(:blog)</title>
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content=" 2013 Xcodeプロジェクトをコピーして新しいプロジェクトをつくる Aug 10 ">
+	<meta name="description" content="既存のXcodeプロジェクトをコピーして新しいプロジェクトを作って開発する必要がありました。
+単純にファイルコピーしてもダメなんだろうなーと思ってたらやっぱりダメで、いろいろとやらないといけませんでした。
+環境はXcode4.6.3です。 まず参考にしたのはこちらです。
+Xcode4. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,126 +77,53 @@
 </header>
   
   
-  <div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Blog Archive</h1>
-    
-    <div class="entry-content"><div id="blog-archives">
+  <div id="content" class="inner"><article class="post">
+	<h2 class="title">Xcodeプロジェクトをコピーして新しいプロジェクトをつくる</h2>
+	<div class="entry-content"><p>既存のXcodeプロジェクトをコピーして新しいプロジェクトを作って開発する必要がありました。<br/>
+単純にファイルコピーしてもダメなんだろうなーと思ってたらやっぱりダメで、いろいろとやらないといけませんでした。<br/>
+環境はXcode4.6.3です。</p>
+
+<p>まず参考にしたのはこちらです。<br/>
+<a href="http://hocosoft.com/memo/%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E5%90%8D%E3%81%AE%E5%A4%89%E6%9B%B4/485/">Xcode4.5でiOSアプリのプロジェクト名を変更する方法</a><br/>
+ざっとやることは</p>
+
+<ul>
+<li>Identity の「Project Name」の項目を書き換える</li>
+<li>スキーム名を変更する</li>
+<li>グループ名を変更する</li>
+<li>プロジェクト名を選択して[Build Settings]から古いプロジェクト名を新しいプロジェクト名に書き換える</li>
+</ul>
+
+
+<p>で、これで基本的に完了な感じですが、自分の場合はARCがらみのエラーがたくさん出てきました。<br/>
+これはプロジェクトのコピーではソースコードファイルのCompiler flagsは移行されないことが原因でした。<br/>
+元プロジェクトのCompiler flagsの設定を新プロジェクトに設定して解消。</p>
+
+<p>さらにこのあとにplistの警告が出てきました。<br/>
+これには下記のとおりCopy Bundle Resoucesからplistをいったん取り除いてから再ビルドで解決しました。<br/>
+<a href="http://cheesememo.blog39.fc2.com/blog-entry-564.html">he Copy Bundle Resources build phase contains this target&#8217;s Info.plist file …</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
 
 
 
   
-  <h2>2013</h2>
-
-<article>
-  
 
 
-<article>
-	<h2 class="title"><a href="/blog/2013/08/10/copy-xcode-project/">Xcodeプロジェクトをコピーして新しいプロジェクトをつくる</a></h2>
-	<div class="meta">
-		<div class="date">Aug 10</div>
-		<div class="tags">
+<time datetime="2013-08-10T17:40:00+09:00" pubdate data-updated="true">Aug 10<span>th</span>, 2013</time></div>
+	<div class="tags">
 
 </div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/03/15/ruby-2-dot-0-0-pitfall/">Ruby2.0にアップグレードしてつまづいたこと</a></h2>
-	<div class="meta">
-		<div class="date">Mar 15</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/02/24/kindle-paperwhite-cant-wifi/">Kindle PaperwhiteがWiFiに接続できないとき</a></h2>
-	<div class="meta">
-		<div class="date">Feb 24</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/01/14/using-rails-compass/">rails-compass導入に難儀した件</a></h2>
-	<div class="meta">
-		<div class="date">Jan 14</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/01/05/code-snippet-sample/">Code Snippet Sample</a></h2>
-	<div class="meta">
-		<div class="date">Jan  5</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/01/05/hazimemasite/">はじめまして</a></h2>
-	<div class="meta">
-		<div class="date">Jan  5</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-</div>
-</div>
-</article>
+	
+</div></article>
 
 	<div class="share">
 	<div class="addthis_toolbox addthis_default_style ">
@@ -209,6 +139,11 @@
 
 
 
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
   <footer id="footer" class="inner">Copyright &copy; 2013
 
@@ -228,7 +163,10 @@
       var disqus_shortname = 's5ot';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://s5ot.github.com/blog/2013/08/10/copy-xcode-project/';
+        var disqus_url = 'http://s5ot.github.com/blog/2013/08/10/copy-xcode-project/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
