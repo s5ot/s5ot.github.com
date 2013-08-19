@@ -3,11 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Blog Archives - s5ot.send(:blog)</title>
+	<title>rvmで入れたgemを削除する - s5ot.send(:blog)</title>
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="2013 rvmで入れたgemを削除する Aug 19 Xcodeプロジェクトをコピーして新しいプロジェクトをつくる Aug 10 Ruby2.0にアップグレードしてつまづいたこと Mar 15 Kindle PaperwhiteがWiFiに接続できないとき Feb 24 rails- &hellip;">
+	<meta name="description" content="以前はずいぶんrvmのお世話になってましたが、最近の開発環境ではすっかりrbenvを使うようになっています。
+けれどもサーバー環境ではまだrvmを使い続けてたりしてます。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,108 +75,76 @@
 </header>
   
   
-  <div id="content" class="inner">
-	
+  <div id="content" class="inner"><article class="post">
+	<h2 class="title">Rvmで入れたgemを削除する</h2>
+	<div class="entry-content"><p>以前はずいぶんrvmのお世話になってましたが、最近の開発環境ではすっかりrbenvを使うようになっています。<br/>
+けれどもサーバー環境ではまだrvmを使い続けてたりしてます。<br/>
+RubyやRailsのバージョンアップがあったりしてgemがけっこうなディスク容量を食っていたので使ってないgemを削除しようと思い立ちました。<br/>
+ちなみにMulti-User Installで入れたrvmなのでコマンドは適当に読み替えてください。</p>
+
+<h3>globalのgemsetを消す</h3>
+
+<p>globalの名前がついたgemsetを消さないと素のgemは消せないようです。 なのでglobalを消します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm gemset delete global</span></code></pre></td></tr></table></div></figure>
 
 
-	
-	
-	<section class="archives"><h1 class="year">2013</h1>
+<h3>素のgemを削除する</h3>
 
-<article>
-	<h2 class="title"><a href="/blog/2013/08/19/remove-gems/">rvmで入れたgemを削除する</a></h2>
-	<div class="meta">
-		<div class="date">Aug 19</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-
-	
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo gem uninstall -axI `gem list --no-versions`</span></code></pre></td></tr></table></div></figure>
 
 
-<article>
-	<h2 class="title"><a href="/blog/2013/08/10/copy-xcode-project/">Xcodeプロジェクトをコピーして新しいプロジェクトをつくる</a></h2>
-	<div class="meta">
-		<div class="date">Aug 10</div>
-		<div class="tags">
+<h3>Rubyを削除する。Rubyだけ削除してもgemは消されないので注意。</h3>
 
-</div>
-	    
-	</div>
-</article>
-
-	
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm remove ruby-xxx-pxxx</span></code></pre></td></tr></table></div></figure>
 
 
-<article>
-	<h2 class="title"><a href="/blog/2013/03/15/ruby-2-dot-0-0-pitfall/">Ruby2.0にアップグレードしてつまづいたこと</a></h2>
-	<div class="meta">
-		<div class="date">Mar 15</div>
-		<div class="tags">
 
 </div>
-	    
-	</div>
-</article>
-
-	
 
 
-<article>
-	<h2 class="title"><a href="/blog/2013/02/24/kindle-paperwhite-cant-wifi/">Kindle PaperwhiteがWiFiに接続できないとき</a></h2>
-	<div class="meta">
-		<div class="date">Feb 24</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-
-	
+<div class="meta">
+	<div class="date">
 
 
-<article>
-	<h2 class="title"><a href="/blog/2013/01/14/using-rails-compass/">rails-compass導入に難儀した件</a></h2>
-	<div class="meta">
-		<div class="date">Jan 14</div>
-		<div class="tags">
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-19T22:03:00+09:00" pubdate data-updated="true">Aug 19<span>th</span>, 2013</time></div>
+	<div class="tags">
 
 </div>
-	    
-	</div>
-</article>
-
 	
+</div></article>
 
-
-<article>
-	<h2 class="title"><a href="/blog/2013/01/05/code-snippet-sample/">Code Snippet Sample</a></h2>
-	<div class="meta">
-		<div class="date">Jan  5</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/01/05/hazimemasite/">はじめまして</a></h2>
-	<div class="meta">
-		<div class="date">Jan  5</div>
-		<div class="tags">
-
-</div>
-	    
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
 	</div>
-</article>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
   <footer id="footer" class="inner">Copyright &copy; 2013
 
@@ -195,7 +164,10 @@
       var disqus_shortname = 's5ot';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://s5ot.github.com/blog/2013/08/19/remove-gems/';
+        var disqus_url = 'http://s5ot.github.com/blog/2013/08/19/remove-gems/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

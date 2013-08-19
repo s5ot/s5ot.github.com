@@ -7,10 +7,8 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="既存のXcodeプロジェクトをコピーして新しいプロジェクトを作って開発する必要がありました。
-単純にファイルコピーしてもダメなんだろうなーと思ってたらやっぱりダメで、いろいろとやらないといけませんでした。
-環境はXcode4.6.3です。 まず参考にしたのはこちらです。
-Xcode4. &hellip;">
+	<meta name="description" content="以前はずいぶんrvmのお世話になってましたが、最近の開発環境ではすっかりrbenvを使うようになっています。
+けれどもサーバー環境ではまだrvmを使い続けてたりしてます。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -78,6 +76,67 @@ Xcode4. &hellip;">
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/08/19/remove-gems/">
+		
+			Rvmで入れたgemを削除する</a>
+	</h2>
+	<div class="entry-content">
+		<p>以前はずいぶんrvmのお世話になってましたが、最近の開発環境ではすっかりrbenvを使うようになっています。<br/>
+けれどもサーバー環境ではまだrvmを使い続けてたりしてます。<br/>
+RubyやRailsのバージョンアップがあったりしてgemがけっこうなディスク容量を食っていたので使ってないgemを削除しようと思い立ちました。<br/>
+ちなみにMulti-User Installで入れたrvmなのでコマンドは適当に読み替えてください。</p>
+
+<h3>globalのgemsetを消す</h3>
+
+<p>globalの名前がついたgemsetを消さないと素のgemは消せないようです。 なのでglobalを消します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm gemset delete global</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>素のgemを削除する</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo gem uninstall -axI `gem list --no-versions`</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Rubyを削除する。Rubyだけ削除してもgemは消されないので注意。</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm remove ruby-xxx-pxxx</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-19T22:03:00+09:00" pubdate data-updated="true">Aug 19<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">

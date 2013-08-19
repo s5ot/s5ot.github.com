@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.com/atom.xml" rel="self"/>
   <link href="http://s5ot.github.com/"/>
-  <updated>2013-08-10T18:23:52+09:00</updated>
+  <updated>2013-08-19T22:57:07+09:00</updated>
   <id>http://s5ot.github.com/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[rvmで入れたgemを削除する]]></title>
+    <link href="http://s5ot.github.com/blog/2013/08/19/remove-gems/"/>
+    <updated>2013-08-19T22:03:00+09:00</updated>
+    <id>http://s5ot.github.com/blog/2013/08/19/remove-gems</id>
+    <content type="html"><![CDATA[<p>以前はずいぶんrvmのお世話になってましたが、最近の開発環境ではすっかりrbenvを使うようになっています。<br/>
+けれどもサーバー環境ではまだrvmを使い続けてたりしてます。<br/>
+RubyやRailsのバージョンアップがあったりしてgemがけっこうなディスク容量を食っていたので使ってないgemを削除しようと思い立ちました。<br/>
+ちなみにMulti-User Installで入れたrvmなのでコマンドは適当に読み替えてください。</p>
+
+<h3>globalのgemsetを消す</h3>
+
+<p>globalの名前がついたgemsetを消さないと素のgemは消せないようです。 なのでglobalを消します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm gemset delete global</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>素のgemを削除する</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo gem uninstall -axI `gem list --no-versions`</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Rubyを削除する。Rubyだけ削除してもgemは消されないので注意。</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm remove ruby-xxx-pxxx</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Xcodeプロジェクトをコピーして新しいプロジェクトをつくる]]></title>
