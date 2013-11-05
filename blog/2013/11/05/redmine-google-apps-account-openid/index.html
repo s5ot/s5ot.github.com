@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Blog Archive - s5ot.send(:blog)</title>
+	<title>Google AppsアカウントでRedmineのOpenID認証 - s5ot.send(:blog)</title>
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content=" 2013 Google AppsアカウントでRedmineのOpenID認証 Nov 5 ">
+	<meta name="description" content="Redmineのバージョンは2.3.3です。 ストレートなOpenID認証ではないのですが、こういうユースケースをRedmineで実現しようとしました。 Redmineにユーザーを登録しておく。ユーザーのメールアドレスはGoogle Appsアカウントのメールアドレスにする。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,162 +74,47 @@
 </header>
   
   
-  <div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Blog Archive</h1>
-    
-    <div class="entry-content"><div id="blog-archives">
+  <div id="content" class="inner"><article class="post">
+	<h2 class="title">Google AppsアカウントでRedmineのOpenID認証</h2>
+	<div class="entry-content"><p>Redmineのバージョンは2.3.3です。</p>
+
+<p>ストレートなOpenID認証ではないのですが、こういうユースケースをRedmineで実現しようとしました。</p>
+
+<ol>
+<li>Redmineにユーザーを登録しておく。ユーザーのメールアドレスはGoogle Appsアカウントのメールアドレスにする。</li>
+<li>Redmineのログイン画面でGoogle AppsアカウントのメールアドレスをOpenID URLに入力してログインする。入力されたメールアドレスのドメインをもとにしてGoogle AppsアカウントのOpenID認証を行う。</li>
+<li>認証できたGoogle Appsアカウントのメールアドレスと同じアドレスを持つユーザーがRedmineにいる場合、Redmineのログイン成功とする。</li>
+</ol>
+
+
+<p>RedmineはもともとOpenID認証の機能を備えており、adminでログインして、管理 - 設定 - 認証からOpenIDによるログインを有効にすることができます。<br/>
+しかしこれだけでは上記のようなユースケースを実現できないので、Redmineをカスタマイズしました。こちらに置きました。<br/>
+<a href="https://github.com/s5ot/redmine-google-apps-openid">redmine-google-apps-openid</a></p>
+
+<p>こちらが参考になりました。ありがとうございます。<br/>
+<a href="http://d.hatena.ne.jp/a_kimura/20100407/1270660711">RailsでGoogle AppsのOpenID対応アプリを作る</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
 
 
 
   
-  <h2>2013</h2>
-
-<article>
-  
 
 
-<article>
-	<h2 class="title"><a href="/blog/2013/11/05/redmine-google-apps-account-openid/">Google AppsアカウントでRedmineのOpenID認証</a></h2>
-	<div class="meta">
-		<div class="date">Nov  5</div>
-		<div class="tags">
+<time datetime="2013-11-05T15:32:00+09:00" pubdate data-updated="true">Nov 5<span>th</span>, 2013</time></div>
+	<div class="tags">
 
 </div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/08/19/remove-gems/">rvmで入れたgemを削除する</a></h2>
-	<div class="meta">
-		<div class="date">Aug 19</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/08/10/copy-xcode-project/">Xcodeプロジェクトをコピーして新しいプロジェクトをつくる</a></h2>
-	<div class="meta">
-		<div class="date">Aug 10</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/03/15/ruby-2-dot-0-0-pitfall/">Ruby2.0にアップグレードしてつまづいたこと</a></h2>
-	<div class="meta">
-		<div class="date">Mar 15</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/02/24/kindle-paperwhite-cant-wifi/">Kindle PaperwhiteがWiFiに接続できないとき</a></h2>
-	<div class="meta">
-		<div class="date">Feb 24</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/01/14/using-rails-compass/">rails-compass導入に難儀した件</a></h2>
-	<div class="meta">
-		<div class="date">Jan 14</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/01/05/code-snippet-sample/">Code Snippet Sample</a></h2>
-	<div class="meta">
-		<div class="date">Jan  5</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-
-
-<article>
-  
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/01/05/hazimemasite/">はじめまして</a></h2>
-	<div class="meta">
-		<div class="date">Jan  5</div>
-		<div class="tags">
-
-</div>
-	    
-	</div>
-</article>
-</article>
-
-</div>
-</div>
-</article>
+	
+</div></article>
 
 	<div class="share">
 	<div class="addthis_toolbox addthis_default_style ">
@@ -245,6 +130,11 @@
 
 
 
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
   <footer id="footer" class="inner">Copyright &copy; 2013
 
@@ -264,7 +154,10 @@
       var disqus_shortname = 's5ot';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://s5ot.github.com/blog/2013/11/05/redmine-google-apps-account-openid/';
+        var disqus_url = 'http://s5ot.github.com/blog/2013/11/05/redmine-google-apps-account-openid/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

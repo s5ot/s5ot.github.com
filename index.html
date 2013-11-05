@@ -7,8 +7,7 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="以前はずいぶんrvmのお世話になってましたが、最近の開発環境ではすっかりrbenvを使うようになっています。
-けれどもサーバー環境ではまだrvmを使い続けてたりしてます。 &hellip;">
+	<meta name="description" content="Redmineのバージョンは2.3.3です。 ストレートなOpenID認証ではないのですが、こういうユースケースをRedmineで実現しようとしました。 Redmineにユーザーを登録しておく。ユーザーのメールアドレスはGoogle Appsアカウントのメールアドレスにする。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -76,6 +75,58 @@
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/11/05/redmine-google-apps-account-openid/">
+		
+			Google AppsアカウントでRedmineのOpenID認証</a>
+	</h2>
+	<div class="entry-content">
+		<p>Redmineのバージョンは2.3.3です。</p>
+
+<p>ストレートなOpenID認証ではないのですが、こういうユースケースをRedmineで実現しようとしました。</p>
+
+<ol>
+<li>Redmineにユーザーを登録しておく。ユーザーのメールアドレスはGoogle Appsアカウントのメールアドレスにする。</li>
+<li>Redmineのログイン画面でGoogle AppsアカウントのメールアドレスをOpenID URLに入力してログインする。入力されたメールアドレスのドメインをもとにしてGoogle AppsアカウントのOpenID認証を行う。</li>
+<li>認証できたGoogle Appsアカウントのメールアドレスと同じアドレスを持つユーザーがRedmineにいる場合、Redmineのログイン成功とする。</li>
+</ol>
+
+
+<p>RedmineはもともとOpenID認証の機能を備えており、adminでログインして、管理 - 設定 - 認証からOpenIDによるログインを有効にすることができます。<br/>
+しかしこれだけでは上記のようなユースケースを実現できないので、Redmineをカスタマイズしました。こちらに置きました。<br/>
+<a href="https://github.com/s5ot/redmine-google-apps-openid">redmine-google-apps-openid</a></p>
+
+<p>こちらが参考になりました。ありがとうございます。<br/>
+<a href="http://d.hatena.ne.jp/a_kimura/20100407/1270660711">RailsでGoogle AppsのOpenID対応アプリを作る</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-05T15:32:00+09:00" pubdate data-updated="true">Nov 5<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
