@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://s5ot.github.com/sitemap.xml 
+Sitemap: http://s5ot.github.io/sitemap.xml 

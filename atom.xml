@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[s5ot.send(:blog)]]></title>
-  <link href="http://s5ot.github.com/atom.xml" rel="self"/>
-  <link href="http://s5ot.github.com/"/>
-  <updated>2013-11-19T02:30:07+09:00</updated>
-  <id>http://s5ot.github.com/</id>
+  <link href="http://s5ot.github.io/atom.xml" rel="self"/>
+  <link href="http://s5ot.github.io/"/>
+  <updated>2013-11-19T02:42:22+09:00</updated>
+  <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Google AppsアカウントでRedmineのOpenID認証]]></title>
-    <link href="http://s5ot.github.com/blog/2013/11/05/redmine-google-apps-account-openid/"/>
+    <link href="http://s5ot.github.io/blog/2013/11/05/redmine-google-apps-account-openid/"/>
     <updated>2013-11-05T15:32:00+09:00</updated>
-    <id>http://s5ot.github.com/blog/2013/11/05/redmine-google-apps-account-openid</id>
+    <id>http://s5ot.github.io/blog/2013/11/05/redmine-google-apps-account-openid</id>
     <content type="html"><![CDATA[<p>Redmineのバージョンは2.3.3です。</p>
 
 <p>ストレートなOpenID認証ではないのですが、こういうユースケースをRedmineで実現しようとしました。</p>
@@ -40,9 +40,9 @@
   
   <entry>
     <title type="html"><![CDATA[rvmで入れたgemを削除する]]></title>
-    <link href="http://s5ot.github.com/blog/2013/08/19/remove-gems/"/>
+    <link href="http://s5ot.github.io/blog/2013/08/19/remove-gems/"/>
     <updated>2013-08-19T22:03:00+09:00</updated>
-    <id>http://s5ot.github.com/blog/2013/08/19/remove-gems</id>
+    <id>http://s5ot.github.io/blog/2013/08/19/remove-gems</id>
     <content type="html"><![CDATA[<p>以前はずいぶんrvmのお世話になってましたが、最近の開発環境ではすっかりrbenvを使うようになっています。<br/>
 けれどもサーバー環境ではまだrvmを使い続けてたりしてます。<br/>
 RubyやRailsのバージョンアップがあったりしてgemがけっこうなディスク容量を食っていたので使ってないgemを削除しようと思い立ちました。<br/>
@@ -76,9 +76,9 @@ RubyやRailsのバージョンアップがあったりしてgemがけっこう�
   
   <entry>
     <title type="html"><![CDATA[Xcodeプロジェクトをコピーして新しいプロジェクトをつくる]]></title>
-    <link href="http://s5ot.github.com/blog/2013/08/10/copy-xcode-project/"/>
+    <link href="http://s5ot.github.io/blog/2013/08/10/copy-xcode-project/"/>
     <updated>2013-08-10T17:40:00+09:00</updated>
-    <id>http://s5ot.github.com/blog/2013/08/10/copy-xcode-project</id>
+    <id>http://s5ot.github.io/blog/2013/08/10/copy-xcode-project</id>
     <content type="html"><![CDATA[<p>既存のXcodeプロジェクトをコピーして新しいプロジェクトを作って開発する必要がありました。<br/>
 単純にファイルコピーしてもダメなんだろうなーと思ってたらやっぱりダメで、いろいろとやらないといけませんでした。<br/>
 環境はXcode4.6.3です。</p>
@@ -107,9 +107,9 @@ RubyやRailsのバージョンアップがあったりしてgemがけっこう�
   
   <entry>
     <title type="html"><![CDATA[Ruby2.0にアップグレードしてつまづいたこと]]></title>
-    <link href="http://s5ot.github.com/blog/2013/03/15/ruby-2-dot-0-0-pitfall/"/>
+    <link href="http://s5ot.github.io/blog/2013/03/15/ruby-2-dot-0-0-pitfall/"/>
     <updated>2013-03-15T14:39:00+09:00</updated>
-    <id>http://s5ot.github.com/blog/2013/03/15/ruby-2-dot-0-0-pitfall</id>
+    <id>http://s5ot.github.io/blog/2013/03/15/ruby-2-dot-0-0-pitfall</id>
     <content type="html"><![CDATA[<p>Ruby 1.9.3 / Rails 3.2.x でアプリを開発しています。</p>
 
 <p>このたびRuby 2.0がめでたくリリースされたのでアップグレードしてみました。</p>
@@ -198,9 +198,9 @@ RubyやRailsのバージョンアップがあったりしてgemがけっこう�
   
   <entry>
     <title type="html"><![CDATA[Kindle PaperwhiteがWiFiに接続できないとき]]></title>
-    <link href="http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/"/>
+    <link href="http://s5ot.github.io/blog/2013/02/24/kindle-paperwhite-cant-wifi/"/>
     <updated>2013-02-24T16:59:00+09:00</updated>
-    <id>http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi</id>
+    <id>http://s5ot.github.io/blog/2013/02/24/kindle-paperwhite-cant-wifi</id>
     <content type="html"><![CDATA[<p>Kindle Paperwhiteを去年11月に購入して使っていたのですが、最近になって充電してください表示から画面が動かなくなってしまいました。
 Amazonサポートに連絡すると、すぐに新しいものを送りますとのことで、2日後には新しいKindle Paperwhiteが届きました。</p>
 
@@ -227,9 +227,9 @@ IPアドレスは他の機器とかぶらないようにします。（192.168.1
   
   <entry>
     <title type="html"><![CDATA[rails-compass導入に難儀した件]]></title>
-    <link href="http://s5ot.github.com/blog/2013/01/14/using-rails-compass/"/>
+    <link href="http://s5ot.github.io/blog/2013/01/14/using-rails-compass/"/>
     <updated>2013-01-14T14:54:00+09:00</updated>
-    <id>http://s5ot.github.com/blog/2013/01/14/using-rails-compass</id>
+    <id>http://s5ot.github.io/blog/2013/01/14/using-rails-compass</id>
     <content type="html"><![CDATA[<p>いい加減sass使わないとなと思い、どうせsass使うならcompass入れちゃおうと思いました。
 compass導入にあたり参考にしたのはこちらです。
 <a href="http://railscasts.com/episodes/334-compass-css-sprites">http://railscasts.com/episodes/334-compass-css-sprites</a></p>
@@ -315,9 +315,9 @@ Rails 3.2.9
   
   <entry>
     <title type="html"><![CDATA[Code Snippet Sample]]></title>
-    <link href="http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/"/>
+    <link href="http://s5ot.github.io/blog/2013/01/05/code-snippet-sample/"/>
     <updated>2013-01-05T23:55:00+09:00</updated>
-    <id>http://s5ot.github.com/blog/2013/01/05/code-snippet-sample</id>
+    <id>http://s5ot.github.io/blog/2013/01/05/code-snippet-sample</id>
     <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo make me a sandwich</span></code></pre></td></tr></table></div></figure>
 
@@ -382,7 +382,7 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
 
 
 
-<figure class='code'><figcaption><span> (server.js)</span> <a href='http://s5ot.github.com/downloads/code/server.js'>download</a></figcaption>
+<figure class='code'><figcaption><span> (server.js)</span> <a href='http://s5ot.github.io/downloads/code/server.js'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -419,9 +419,9 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
   
   <entry>
     <title type="html"><![CDATA[はじめまして]]></title>
-    <link href="http://s5ot.github.com/blog/2013/01/05/hazimemasite/"/>
+    <link href="http://s5ot.github.io/blog/2013/01/05/hazimemasite/"/>
     <updated>2013-01-05T23:11:00+09:00</updated>
-    <id>http://s5ot.github.com/blog/2013/01/05/hazimemasite</id>
+    <id>http://s5ot.github.io/blog/2013/01/05/hazimemasite</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>

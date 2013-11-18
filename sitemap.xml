@@ -1,55 +1,55 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://s5ot.github.com/blog/2013/01/05/hazimemasite/</loc>
+        <loc>http://s5ot.github.io/blog/2013/01/05/hazimemasite/</loc>
         <lastmod>2013-03-04T00:55:37+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/blog/2013/01/05/code-snippet-sample/</loc>
+        <loc>http://s5ot.github.io/blog/2013/01/05/code-snippet-sample/</loc>
         <lastmod>2013-03-04T00:55:37+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/blog/2013/01/14/using-rails-compass/</loc>
+        <loc>http://s5ot.github.io/blog/2013/01/14/using-rails-compass/</loc>
         <lastmod>2013-03-04T00:55:37+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/blog/2013/02/24/kindle-paperwhite-cant-wifi/</loc>
+        <loc>http://s5ot.github.io/blog/2013/02/24/kindle-paperwhite-cant-wifi/</loc>
         <lastmod>2013-03-04T00:55:37+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/blog/2013/03/15/ruby-2-dot-0-0-pitfall/</loc>
+        <loc>http://s5ot.github.io/blog/2013/03/15/ruby-2-dot-0-0-pitfall/</loc>
         <lastmod>2013-03-16T14:56:06+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/blog/2013/08/10/copy-xcode-project/</loc>
+        <loc>http://s5ot.github.io/blog/2013/08/10/copy-xcode-project/</loc>
         <lastmod>2013-08-10T18:23:51+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/blog/2013/08/19/remove-gems/</loc>
+        <loc>http://s5ot.github.io/blog/2013/08/19/remove-gems/</loc>
         <lastmod>2013-08-19T23:08:44+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/blog/2013/11/05/redmine-google-apps-account-openid/</loc>
+        <loc>http://s5ot.github.io/blog/2013/11/05/redmine-google-apps-account-openid/</loc>
         <lastmod>2013-11-05T16:14:59+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/archives/</loc>
+        <loc>http://s5ot.github.io/archives/</loc>
         <lastmod>2013-11-05T16:14:59+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/blog/archives/</loc>
+        <loc>http://s5ot.github.io/blog/archives/</loc>
         <lastmod>2013-11-05T16:14:59+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/</loc>
+        <loc>http://s5ot.github.io/</loc>
         <lastmod>2013-11-05T16:14:59+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/robots.txt</loc>
+        <loc>http://s5ot.github.io/robots.txt</loc>
         <lastmod>2013-01-05T23:04:05+09:00</lastmod>
     </url>
     <url>
-        <loc>http://s5ot.github.com/search.html</loc>
+        <loc>http://s5ot.github.io/search.html</loc>
         <lastmod>2013-03-04T00:55:37+09:00</lastmod>
     </url>
 </urlset>
