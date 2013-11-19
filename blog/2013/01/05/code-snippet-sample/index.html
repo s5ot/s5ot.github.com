@@ -30,52 +30,56 @@ end class BootstrapLinkRenderer &lt; WillPaginate &hellip;">
 <body>
   <header id="header" class="inner"><h1><a href="/">s5ot.send(:blog)</a></h1>
 <nav id="main-nav"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
 </ul>
 </nav>
 <nav id="mobile-nav">
-	<div class="alignleft menu">
-		<a class="button">Menu</a>
-		<div class="container"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archives</a></li>
+  <div class="alignleft menu">
+    <a class="button">Menu</a>
+    <div class="container"><ul class="main">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
 </ul>
 </div>
-	</div>
-	<div class="alignright search">
-		<a class="button"></a>
-		<div class="container">
-			<form action="http://google.com/search" method="get">
-				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:s5ot.github.io">
-			</form>
-		</div>
-	</div>
+  </div>
+  <div class="alignright search">
+    <a class="button"></a>
+    <div class="container">
+      <form action="http://google.com/search" method="get">
+        <input type="text" name="q" results="0">
+        <input type="hidden" name="q" value="site:s5ot.github.io">
+      </form>
+    </div>
+  </div>
 </nav>
 <nav id="sub-nav" class="alignright">
-	<div class="social">
-		
-		
-		
-		<a class="twitter" href="http://twitter.com/s5ot" title="Twitter">Twitter</a>
-		
-		
-		<a class="github" href="https://github.com/s5ot" title="GitHub">GitHub</a>
-		
+  <div class="social">
     
-		
-		
-		
-		
-		
-		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
-		
-	</div>
-	<form class="search" action="http://google.com/search" method="get">
-		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:s5ot.github.io">
-	</form>
+    
+    <!--
+    
+    <a class="twitter" href="http://twitter.com/s5ot" title="Twitter">Twitter</a>
+    
+    
+    <a class="github" href="https://github.com/s5ot" title="GitHub">GitHub</a>
+    
+    -->
+    
+    
+    
+    
+    
+    
+    <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+    
+  </div>
+  <form class="search" action="http://google.com/search" method="get">
+    <input class="alignright" type="text" name="q" results="0">
+    <input type="hidden" name="q" value="site:s5ot.github.io">
+  </form>
 </nav>
 
 </header>
@@ -108,7 +112,7 @@ end class BootstrapLinkRenderer &lt; WillPaginate &hellip;">
     unless page == current_page
       tag(:li, link(page, page, :rel =&gt; rel_value(page)))
     else
-      tag(:li, link(page, &quot;#&quot;), :class =&gt; 'active')
+      tag(:li, link(page, &quot;#&quot;), :class =&gt; &#39;active&#39;)
     end
   end
 
@@ -127,21 +131,21 @@ end class BootstrapLinkRenderer &lt; WillPaginate &hellip;">
 
   def previous_or_next_page(page, text, classname)
     classname = case classname
-    when 'previous_page'
-     'prev'
-    when 'next_page'
-     'next'
+    when &#39;previous_page&#39;
+     &#39;prev&#39;
+    when &#39;next_page&#39;
+     &#39;next&#39;
     end
 
     if page
       tag(:li, link(text, page), :class =&gt; classname)
     else
-      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + ' disabled')
+      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + &#39; disabled&#39;)
     end
   end
 end
 
-WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer'
+WillPaginate::ViewHelpers.pagination_options[:renderer] = &#39;BootstrapLinkRenderer&#39;
 </code></pre></noscript></div>
 
 
@@ -199,6 +203,8 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapLinkRenderer
 	<div class="tags">
 
 </div>
+	
+		<div class="comments"><a href="/blog/2013/01/05/code-snippet-sample/#disqus_thread">Comments</a></div>
 	
 </div></article>
 
