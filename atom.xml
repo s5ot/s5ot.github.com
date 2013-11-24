@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2013-11-19T15:34:55+09:00</updated>
+  <updated>2013-11-25T01:09:06+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,118 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[generator-angularでつくったプロジェクトでE2Eテストを実行する]]></title>
+    <link href="http://s5ot.github.io/blog/2013/11/25/generator-angular-e2e-test/"/>
+    <updated>2013-11-25T00:04:00+09:00</updated>
+    <id>http://s5ot.github.io/blog/2013/11/25/generator-angular-e2e-test</id>
+    <content type="html"><![CDATA[<p>モリモリ盛り上がってるAngularJSのプロジェクトひな形を作ってくれる<a href="https://github.com/yeoman/generator-angular">generator-angular</a> でE2Eテストをするためのメモ。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yo angular
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>でひな形をつくった時点で、</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt <span class="nb">test</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>でユニットテストをすぐ実行することができる。<br/>
+が、E2Eテストを実行するタスクが見当たらない。<br/>
+karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつくられている。</p>
+
+<p>ということで、karma-e2e.conf.jsのこの部分を</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
+</span><span class='line'><span class="c1">// proxies: {</span>
+</span><span class='line'><span class="c1">//   &#39;/&#39;: &#39;http://localhost:9000/&#39;</span>
+</span><span class='line'><span class="c1">// },</span>
+</span><span class='line'><span class="c1">// URL root prevent conflicts with the site root</span>
+</span><span class='line'><span class="c1">// urlRoot: &#39;_karma_&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>コメントアウトする。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
+</span><span class='line'><span class="nx">proxies</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>  <span class="s1">&#39;/&#39;</span><span class="o">:</span> <span class="s1">&#39;http://localhost:9000/&#39;</span>
+</span><span class='line'><span class="p">},</span>
+</span><span class='line'><span class="c1">// URL root prevent conflicts with the site root</span>
+</span><span class='line'><span class="nx">urlRoot</span><span class="o">:</span> <span class="s1">&#39;_karma_&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>testディレクトリ以下にe2eというディレクトリをつくって</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir <span class="nb">test</span>/e2e
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この下にE2Eのテストを置く。</p>
+
+<figure class='code'><figcaption><span>test/e2e/sample.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;E2E: Testing Routes:&#39;</span><span class="p">,</span>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">browser</span><span class="p">().</span><span class="nx">navigateTo</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should display message&#39;</span><span class="p">,</span>  <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">element</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;&#39;Allo,  &#39;Allo!&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そして、おもむろにターミナルでサーバーを起動して。。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt serve
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>さらに別のターミナルでkarmaコマンドを叩けばtest/e2e以下のE2Eテストが実行される。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>karma start karma-e2e.conf.js
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>どうもE2Eテストのあり方が定まっていないらしく、現在こういう中途半端な状態になっている模様です。<br/>
+<a href="https://github.com/yeoman/generator-angular/issues/326">Add an E2E Spec When a View is Created</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Google AppsアカウントでRedmineのOpenID認証]]></title>
