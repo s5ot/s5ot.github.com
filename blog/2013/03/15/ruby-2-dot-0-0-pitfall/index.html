@@ -93,11 +93,7 @@
 
 <h3>対策： 下記のとおり。</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew update
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ brew update
 </span><span class='line'>$ brew install openssl
 </span><span class='line'>$ rvm get head
 </span><span class='line'>$ rvm install ruby-2.0.0 --skip-openssl --with-opt-dir="`brew --prefix openssl`"</span></code></pre></td></tr></table></div></figure>
@@ -137,14 +133,12 @@
 
 <p>ビルド中にこんなのを吐いて落ちました。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cannot load such file -- rubygems/builder</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>cannot load such file -- rubygems/builder</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>対策：Stableな3.0.19はRuby2.0に対応していないようです。</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem i passenger --pre</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ gem i passenger --pre</span></code></pre></td></tr></table></div></figure>
 
 
 <p>で4.0.0 RCのPassegerをインストールしてビルドします。</p>

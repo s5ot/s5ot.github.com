@@ -81,7 +81,7 @@ http://railscasts.com/episodes/334-compass-css-sprites &hellip;">
   
   
   <div id="content" class="inner"><article class="post">
-	<h2 class="title">Rails-compass導入に難儀した件</h2>
+	<h2 class="title">rails-compass導入に難儀した件</h2>
 	<div class="entry-content"><p>いい加減sass使わないとなと思い、どうせsass使うならcompass入れちゃおうと思いました。
 compass導入にあたり参考にしたのはこちらです。
 <a href="http://railscasts.com/episodes/334-compass-css-sprites">http://railscasts.com/episodes/334-compass-css-sprites</a></p>
@@ -96,19 +96,7 @@ compass導入にあたり参考にしたのはこちらです。
 結果、それでうまくいきました。</p>
 
 <figure class='code'><figcaption><span>変更前Gemfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
+<div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
 </span><span class='line'>  gem 'sass-rails',    '~> 3.2.3'
 </span><span class='line'>  gem 'coffee-rails',  '~> 3.2.1'
 </span><span class='line'>
@@ -125,20 +113,7 @@ compass導入にあたり参考にしたのはこちらです。
 
 
 <figure class='code'><figcaption><span>変更後Gemfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
+<div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
 </span><span class='line'>end
 </span><span class='line'>
 </span><span class='line'>gem 'sass-rails',    '~> 3.2.5'

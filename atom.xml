@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2013-11-25T01:09:06+09:00</updated>
+  <updated>2013-11-29T14:56:04+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -14,21 +14,66 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Capistranoタスクの中でbundle execする]]></title>
+    <link href="http://s5ot.github.io/blog/2013/11/29/bundle-exec-in-bundle-exec/"/>
+    <updated>2013-11-29T13:58:00+09:00</updated>
+    <id>http://s5ot.github.io/blog/2013/11/29/bundle-exec-in-bundle-exec</id>
+    <content type="html"><![CDATA[<p>ローカルのRailsアプリディレクトリでとあるrakeタスクを実行する処理をCapistranoのタスクで実行したかったです。こういう感じです。</p>
+
+<figure class='code'><figcaption><span>Capfile</span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">task</span> <span class="ss">:korejikkou</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">run</span> <span class="o">&lt;&lt;-</span><span class="no">CMD</span>
+</span><span class='line'><span class="sh">    cd #{toaru_rails_dir}</span>
+</span><span class='line'><span class="sh">    bundle exec rake toaru</span>
+</span><span class='line'><span class="no">  CMD</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これを</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle <span class="nb">exec </span>cap
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>で実行すると、korejikkouの中のbundle execはcapコマンドを実行したディレクトリベースで動いてしまいます。。<br/>
+困った。<br/>
+こちらにあるように、bundle installには任意のGemfileを指定できるオプションがあるようですが、bundle exec にはないみたいです。<br/>
+<a href="http://blog.kyanny.me/entry/2012/04/25/074256">bundle のなかで bundle する</a></p>
+
+<p>が、bundlerではBUNDLE_GEMFILEという環境変数にGemfileの場所がセットされるらしく、これを書き換えると意図してたことができました。</p>
+
+<figure class='code'><figcaption><span>Capfile</span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">task</span> <span class="ss">:korejikkou</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">org_gemfile</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;BUNDLE_GEMFILE&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;BUNDLE_GEMFILE&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">toaru_rails_dir</span><span class="si">}</span><span class="s2">/Gemfile&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">run</span> <span class="o">&lt;&lt;-</span><span class="no">CMD</span>
+</span><span class='line'><span class="sh">    cd #{toaru_rails_dir}</span>
+</span><span class='line'><span class="sh">    bundle exec rake toaru</span>
+</span><span class='line'><span class="no">  CMD</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;BUNDLE_GEMFILE&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">org_gemfile</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  （あとで気づいたが、bundle install &#8211;gemfileしてからbundle exec すれば指定したGemfileが使われるんだろう。きっと）</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[generator-angularでつくったプロジェクトでE2Eテストを実行する]]></title>
     <link href="http://s5ot.github.io/blog/2013/11/25/generator-angular-e2e-test/"/>
     <updated>2013-11-25T00:04:00+09:00</updated>
     <id>http://s5ot.github.io/blog/2013/11/25/generator-angular-e2e-test</id>
     <content type="html"><![CDATA[<p>モリモリ盛り上がってるAngularJSのプロジェクトひな形を作ってくれる<a href="https://github.com/yeoman/generator-angular">generator-angular</a> でE2Eテストをするためのメモ。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yo angular
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yo angular
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>でひな形をつくった時点で、</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt <span class="nb">test</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt <span class="nb">test</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -38,13 +83,7 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 
 <p>ということで、karma-e2e.conf.jsのこの部分を</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
 </span><span class='line'><span class="c1">// proxies: {</span>
 </span><span class='line'><span class="c1">//   &#39;/&#39;: &#39;http://localhost:9000/&#39;</span>
 </span><span class='line'><span class="c1">// },</span>
@@ -55,13 +94,7 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 
 <p>コメントアウトする。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
 </span><span class='line'><span class="nx">proxies</span><span class="o">:</span> <span class="p">{</span>
 </span><span class='line'>  <span class="s1">&#39;/&#39;</span><span class="o">:</span> <span class="s1">&#39;http://localhost:9000/&#39;</span>
 </span><span class='line'><span class="p">},</span>
@@ -72,26 +105,13 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 
 <p>testディレクトリ以下にe2eというディレクトリをつくって</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir <span class="nb">test</span>/e2e
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir <span class="nb">test</span>/e2e
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>この下にE2Eのテストを置く。</p>
 
-<figure class='code'><figcaption><span>test/e2e/sample.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;E2E: Testing Routes:&#39;</span><span class="p">,</span>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<figure class='code'><figcaption><span>test/e2e/sample.js</span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;E2E: Testing Routes:&#39;</span><span class="p">,</span>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 </span><span class='line'>  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -108,15 +128,13 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 
 <p>そして、おもむろにターミナルでサーバーを起動して。。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt serve
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt serve
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>さらに別のターミナルでkarmaコマンドを叩けばtest/e2e以下のE2Eテストが実行される。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>karma start karma-e2e.conf.js
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>karma start karma-e2e.conf.js
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -164,20 +182,17 @@ RubyやRailsのバージョンアップがあったりしてgemがけっこう�
 
 <p>globalの名前がついたgemsetを消さないと素のgemは消せないようです。 なのでまずglobalを消します。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm gemset delete global</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm gemset delete global</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>素のgemを削除する</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo gem uninstall -axI `gem list --no-versions`</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo gem uninstall -axI `gem list --no-versions`</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Rubyを削除する。Rubyだけ削除してもgemは消されないので注意。</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm remove ruby-xxx-pxxx</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm remove ruby-xxx-pxxx</span></code></pre></td></tr></table></div></figure>
 
 
 <p>参考にさせてもらったのはこちらです！<br/>
@@ -235,11 +250,7 @@ RubyやRailsのバージョンアップがあったりしてgemがけっこう�
 
 <h3>対策： 下記のとおり。</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew update
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ brew update
 </span><span class='line'>$ brew install openssl
 </span><span class='line'>$ rvm get head
 </span><span class='line'>$ rvm install ruby-2.0.0 --skip-openssl --with-opt-dir="`brew --prefix openssl`"</span></code></pre></td></tr></table></div></figure>
@@ -279,14 +290,12 @@ RubyやRailsのバージョンアップがあったりしてgemがけっこう�
 
 <p>ビルド中にこんなのを吐いて落ちました。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cannot load such file -- rubygems/builder</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>cannot load such file -- rubygems/builder</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>対策：Stableな3.0.19はRuby2.0に対応していないようです。</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem i passenger --pre</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ gem i passenger --pre</span></code></pre></td></tr></table></div></figure>
 
 
 <p>で4.0.0 RCのPassegerをインストールしてビルドします。</p>
@@ -356,19 +365,7 @@ compass導入にあたり参考にしたのはこちらです。
 結果、それでうまくいきました。</p>
 
 <figure class='code'><figcaption><span>変更前Gemfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
+<div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
 </span><span class='line'>  gem 'sass-rails',    '~> 3.2.3'
 </span><span class='line'>  gem 'coffee-rails',  '~> 3.2.1'
 </span><span class='line'>
@@ -385,20 +382,7 @@ compass導入にあたり参考にしたのはこちらです。
 
 
 <figure class='code'><figcaption><span>変更後Gemfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
+<div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
 </span><span class='line'>end
 </span><span class='line'>
 </span><span class='line'>gem 'sass-rails',    '~> 3.2.5'
@@ -430,18 +414,12 @@ Rails 3.2.9
     <link href="http://s5ot.github.io/blog/2013/01/05/code-snippet-sample/"/>
     <updated>2013-01-05T23:55:00+09:00</updated>
     <id>http://s5ot.github.io/blog/2013/01/05/code-snippet-sample</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo make me a sandwich</span></code></pre></td></tr></table></div></figure>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo make me a sandwich</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<figure class='code'><figcaption><span>This is sample</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sample</span>
+<figure class='code'><figcaption><span>This is sample</span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sample</span>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">sample</span>
 </span><span class='line'>    <span class="s2">&quot;sample&quot;</span>
 </span><span class='line'>  <span class="k">end</span>
@@ -495,13 +473,7 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = &#39;BootstrapLinkRend
 
 
 <figure class='code'><figcaption><span> (server.js)</span> <a href='http://s5ot.github.io/downloads/code/server.js'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+ <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span>  <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>          <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">});</span>
 </span><span class='line'>            <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
@@ -512,15 +484,12 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = &#39;BootstrapLinkRend
 
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Awesome code snippet</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>Awesome code snippet</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<figure class='code'><figcaption><span>Javascript Array Syntax </span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
+<figure class='code'><figcaption><span>Javascript Array Syntax </span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption> <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span>  <span class="nx">element1</span><span class="p">,</span>  <span class="p">...,</span>  <span class="nx">elementN</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 

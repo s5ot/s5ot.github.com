@@ -80,7 +80,7 @@
   
   
   <div id="content" class="inner"><article class="post">
-	<h2 class="title">Rvmで入れたgemを削除する</h2>
+	<h2 class="title">rvmで入れたgemを削除する</h2>
 	<div class="entry-content"><p>以前はずいぶんrvmのお世話になってましたが、最近の開発環境ではすっかりrbenvを使うようになっています。<br/>
 けれどもサーバー環境ではまだrvmを使い続けてたりしてます。<br/>
 RubyやRailsのバージョンアップがあったりしてgemがけっこうなディスク容量を食っていたので使ってないgemを削除しようと思い立ちました。<br/>
@@ -90,20 +90,17 @@ RubyやRailsのバージョンアップがあったりしてgemがけっこう�
 
 <p>globalの名前がついたgemsetを消さないと素のgemは消せないようです。 なのでまずglobalを消します。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm gemset delete global</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm gemset delete global</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>素のgemを削除する</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo gem uninstall -axI `gem list --no-versions`</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo gem uninstall -axI `gem list --no-versions`</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Rubyを削除する。Rubyだけ削除してもgemは消されないので注意。</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm remove ruby-xxx-pxxx</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm remove ruby-xxx-pxxx</span></code></pre></td></tr></table></div></figure>
 
 
 <p>参考にさせてもらったのはこちらです！<br/>

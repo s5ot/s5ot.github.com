@@ -7,9 +7,7 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="モリモリ盛り上がってるAngularJSのプロジェクトひな形を作ってくれるgenerator-angular でE2Eテストをするためのメモ。 1
-$ yo angular でひな形をつくった時点で、 1
-$ grunt test でユニットテストをすぐ実行することができる。
+	<meta name="description" content="モリモリ盛り上がってるAngularJSのプロジェクトひな形を作ってくれるgenerator-angular でE2Eテストをするためのメモ。 $ yo angular でひな形をつくった時点で、 $ grunt test でユニットテストをすぐ実行することができる。
 が、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -85,15 +83,13 @@ $ grunt test でユニットテストをすぐ実行することができる。
 	<h2 class="title">generator-angularでつくったプロジェクトでE2Eテストを実行する</h2>
 	<div class="entry-content"><p>モリモリ盛り上がってるAngularJSのプロジェクトひな形を作ってくれる<a href="https://github.com/yeoman/generator-angular">generator-angular</a> でE2Eテストをするためのメモ。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yo angular
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yo angular
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>でひな形をつくった時点で、</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt <span class="nb">test</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt <span class="nb">test</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -103,13 +99,7 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 
 <p>ということで、karma-e2e.conf.jsのこの部分を</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
 </span><span class='line'><span class="c1">// proxies: {</span>
 </span><span class='line'><span class="c1">//   &#39;/&#39;: &#39;http://localhost:9000/&#39;</span>
 </span><span class='line'><span class="c1">// },</span>
@@ -120,13 +110,7 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 
 <p>コメントアウトする。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Uncomment the following lines if you are using grunt&#39;s server to run the tests</span>
 </span><span class='line'><span class="nx">proxies</span><span class="o">:</span> <span class="p">{</span>
 </span><span class='line'>  <span class="s1">&#39;/&#39;</span><span class="o">:</span> <span class="s1">&#39;http://localhost:9000/&#39;</span>
 </span><span class='line'><span class="p">},</span>
@@ -137,26 +121,13 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 
 <p>testディレクトリ以下にe2eというディレクトリをつくって</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir <span class="nb">test</span>/e2e
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir <span class="nb">test</span>/e2e
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>この下にE2Eのテストを置く。</p>
 
-<figure class='code'><figcaption><span>test/e2e/sample.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;E2E: Testing Routes:&#39;</span><span class="p">,</span>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<figure class='code'><figcaption><span>test/e2e/sample.js</span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;E2E: Testing Routes:&#39;</span><span class="p">,</span>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 </span><span class='line'>  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -173,15 +144,13 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 
 <p>そして、おもむろにターミナルでサーバーを起動して。。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt serve
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt serve
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>さらに別のターミナルでkarmaコマンドを叩けばtest/e2e以下のE2Eテストが実行される。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>karma start karma-e2e.conf.js
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>karma start karma-e2e.conf.js
 </span></code></pre></td></tr></table></div></figure>
 
 
