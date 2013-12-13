@@ -7,7 +7,8 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="ローカルのRailsアプリディレクトリでとあるrakeタスクを実行する処理をCapistranoのタスクで実行したかったです。こういう感じです。 Capfiletask :korejikkou do run &lt;&lt;-CMD cd #{toaru_rails_dir} bundle &hellip;">
+	<meta name="description" content="RubyMotionアプリでStoryboardを使ったら楽になるかなあ、ていうかそもそもRubyMotionでStoryboardって使えるのかしら、とぼんやり思ったのでggってみたらズバリなページが見つかりました。
+RubyMotion で Storyboard を使う &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -79,6 +80,102 @@
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/12/13/rubymotion-with-storyboard/">
+		
+			RubyMotionアプリでStoryboardを使うには</a>
+	</h2>
+	<div class="entry-content">
+		<p>RubyMotionアプリでStoryboardを使ったら楽になるかなあ、ていうかそもそもRubyMotionでStoryboardって使えるのかしら、とぼんやり思ったのでggってみたらズバリなページが見つかりました。<br/>
+<a href="http://toshikazuhorii.github.io/blog/2012/12/11/storyboard-for-rubymotion/">RubyMotion で Storyboard を使う</a><br/>
+非常に丁寧にまとまっています。ありがとうございます。 <br/>
+こちらにあるとおり、RubyMotionでもStoryboardはバッチリ使えました。<br/>
+楽になるかはまだよく分かりません。。<br/>
+とりま、使う手順をまとめてみました。</p>
+
+<h3>やること</h3>
+
+<ol>
+<li>XcodeでStoryboardを作成する</li>
+<li>StoryboardファイルをコンパイルしてできたディレクトリをRubyMotionアプリのresourcesの下に配置する</li>
+<li>AppDelegateのapplicationメソッドの中でStoryboardを読み込み、Storyboard IDとともにrootViewControllerを設定する</li>
+</ol>
+
+
+<h3>1. XcodeでStoryboardを作成する</h3>
+
+<p>ここで作成するときのポイント。</p>
+
+<h4>最初に表示するViewControllerのStoryboard IDに任意値を設定する</h4>
+
+<p>Storyboardを読み込み、rootViewControllerを設定する際に必要になります。</p>
+
+<h4>SegueにIDを設定する</h4>
+
+<p>Segueによる画面遷移をRubyMotionでperformSegueWithIdentifierを使って実装してあげるため、IDが必要になります。</p>
+
+<h3>2. StoryboardファイルをコンパイルしてできたディレクトリをRubyMotionアプリのresourcesの下に配置する</h3>
+
+<p>StoryboardファイルをRubyMotionアプリのresourcesの下へコピーして、</p>
+
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ ibtool --compile Main.storyboardc Main.storyboard</span></code></pre></td></tr></table></div></figure>
+
+
+<p>のようにコンパイルすると、Main.storyboardc というようなディレクトリが作成されます。</p>
+
+<h3>3. AppDelegateのapplicationメソッドの中でStoryboardを読み込み、Storyboard IDとともにrootViewControllerを設定する</h3>
+
+<p>UIStoryboardのinstantiateViewControllerWithIdentifierでStoryboard IDを指定します。</p>
+
+<figure class='code'> <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AppDelegate</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="ss">didFinishLaunchingWithOptions</span><span class="p">:</span><span class="n">launchOptions</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="no">RUBYMOTION_ENV</span> <span class="o">==</span> <span class="s1">&#39;test&#39;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="vi">@window</span> <span class="o">=</span> <span class="no">UIWindow</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">initWithFrame</span><span class="p">(</span><span class="no">UIScreen</span><span class="o">.</span><span class="n">mainScreen</span><span class="o">.</span><span class="n">bounds</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@storyboard</span> <span class="o">=</span> <span class="no">UIStoryboard</span><span class="o">.</span><span class="n">storyboardWithName</span><span class="p">(</span><span class="s1">&#39;Main&#39;</span><span class="p">,</span>  <span class="ss">bundle</span><span class="p">:</span><span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@window</span><span class="o">.</span><span class="n">rootViewController</span> <span class="o">=</span> <span class="vi">@storyboard</span><span class="o">.</span><span class="n">instantiateViewControllerWithIdentifier</span><span class="p">(</span><span class="s1">&#39;TopTab&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@window</span><span class="o">.</span><span class="n">rootViewController</span><span class="o">.</span><span class="n">wantsFullScreenLayout</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="vi">@window</span><span class="o">.</span><span class="n">makeKeyAndVisible</span>
+</span><span class='line'>    <span class="kp">true</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>サンプルアプリつくってみました。</h3>
+
+<p><a href="https://github.com/s5ot/MotionWithStoryboard">MotionWithStoryboard</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-13T14:29:00+09:00" pubdate data-updated="true">Dec 13<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2013/12/13/rubymotion-with-storyboard//index.html#disqus_thread">Comments</a></div>
+	
+</div></article>
 
 
     <article class="post">
@@ -826,46 +923,10 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = &#39;BootstrapLinkRend
 	
 </div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/01/05/hazimemasite/">
-		
-			はじめまして</a>
-	</h2>
-	<div class="entry-content">
-		
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-05T23:11:00+09:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-</div>
-	
-		<div class="comments"><a href="/blog/2013/01/05/hazimemasite//index.html#disqus_thread">Comments</a></div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
+    
+        <a href="/blog/page/2/" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
