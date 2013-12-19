@@ -7,7 +7,8 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content=" Jan 5th, 2013 Comments ">
+	<meta name="description" content="$ sudo make me a sandwich This is sampleclass Sample def sample &quot;sample&quot; end
+end class BootstrapLinkRenderer &lt; WillPaginate::ActionView &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -79,6 +80,124 @@
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/01/05/code-snippet-sample/">
+		
+			Code Snippet Sample</a>
+	</h2>
+	<div class="entry-content">
+		<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo make me a sandwich</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>This is sample</span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Sample</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">sample</span>
+</span><span class='line'>    <span class="s2">&quot;sample&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<div><script src='https://gist.github.com/1170346.js'></script>
+<noscript><pre><code>class BootstrapLinkRenderer &lt; WillPaginate::ActionView::LinkRenderer
+  def page_number(page)
+    unless page == current_page
+      tag(:li, link(page, page, :rel =&gt; rel_value(page)))
+    else
+      tag(:li, link(page, &quot;#&quot;), :class =&gt; &#39;active&#39;)
+    end
+  end
+
+  def link(text, target, attributes = {})
+    if target.is_a? Fixnum
+      attributes[:rel] = rel_value(target)
+      target = url(target)
+    end
+    attributes[:href] = target
+    tag(:a, text, attributes)
+  end
+
+  def html_container(html)
+    tag(:div, tag(:ul, html), container_attributes)
+  end
+
+  def previous_or_next_page(page, text, classname)
+    classname = case classname
+    when &#39;previous_page&#39;
+     &#39;prev&#39;
+    when &#39;next_page&#39;
+     &#39;next&#39;
+    end
+
+    if page
+      tag(:li, link(text, page), :class =&gt; classname)
+    else
+      tag(:li, link(text, &quot;#&quot;), :class =&gt; classname + &#39; disabled&#39;)
+    end
+  end
+end
+
+WillPaginate::ViewHelpers.pagination_options[:renderer] = &#39;BootstrapLinkRenderer&#39;
+</code></pre></noscript></div>
+
+
+
+
+<figure class='code'><figcaption><span> (server.js)</span> <a href='/downloads/code/server.js'>download</a></figcaption>
+ <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span>  <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">});</span>
+</span><span class='line'>            <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8124</span><span class="p">,</span>  <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Server running at http://127.0.0.1:8124/&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>Awesome code snippet</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Javascript Array Syntax </span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption> <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span>  <span class="nx">element1</span><span class="p">,</span>  <span class="p">...,</span>  <span class="nx">elementN</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-05T23:55:00+09:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2013/01/05/code-snippet-sample//blog/page/2/index.html#disqus_thread">Comments</a></div>
+	
+</div></article>
 
 
     <article class="post">

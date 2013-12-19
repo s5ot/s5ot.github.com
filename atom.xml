@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2013-12-16T16:18:36+09:00</updated>
+  <updated>2013-12-19T15:11:27+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fluentd + Elasticsearch + Kibana3を動かしてみる]]></title>
+    <link href="http://s5ot.github.io/blog/2013/12/19/kibana3/"/>
+    <updated>2013-12-19T14:18:00+09:00</updated>
+    <id>http://s5ot.github.io/blog/2013/12/19/kibana3</id>
+    <content type="html"><![CDATA[<p>Elasticsearchすげーよ、なんでいままで使ってなかったんだろう！的なツイートを見かけて、おおこれは触っておかなければ、と思い立ちました。</p>
+
+<p>ElasticsearchにRESTでデータを投げ込んで、それをKibana3で見てみましたが、なんだかピンとこなかったので、みんなどうしているのかなとggってみると、ApacheログをFluentdで読んでElasticsearchに投げてKibana3で見る、っていうのをみんなチュートリアル的にやってる感じなのでそれをやってみました。<br/>
+参考にしたのはこちらです。<br/>
+<a href="http://blog.johtani.info/blog/2013/06/10/fluent-es-kibana/">Apache-loggen + Fluentd + Elasticsearch + Kibana = ログ検索デモ</a></p>
+
+<h3>Elasticsearchのインストール</h3>
+
+<p>本家サイトからzipをダウンロードして解凍したディレクトリで</p>
+
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ bin/elasticsearch -f</span></code></pre></td></tr></table></div></figure>
+
+
+<p>で起動。
+簡単です。</p>
+
+<h3>Kibana3のインストール</h3>
+
+<p>これまた本家サイトからzipをダウンロードして解凍したディレクトリをApacheのドキュメントルートに放り込めば動きます。<br/>
+簡単です。</p>
+
+<h3>Fluentdのインストール</h3>
+
+<p>若干ハマりました。。 <br/>
+Fluentdはいろいろとインストールの方法があるのですが、なんとなくbrewでインストールしてみました。<br/>
+で、FluentdからElasticsearchへ連携するためにfluent-plugin-elasticsearchというFluentdのプラグインを使いますのでインストールします。<br/>
+<a href="https://github.com/uken/fluent-plugin-elasticsearch">fluent-plugin-elasticsearch</a><br/>
+そしてFluentdの設定を追加します。</p>
+
+<figure class='code'><figcaption><span>td-agent.conf</span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="n">type</span> <span class="n">tail</span>
+</span><span class='line'>  <span class="nb">format</span> <span class="n">apache</span>
+</span><span class='line'>  <span class="n">path</span> <span class="sr">/Applications/</span><span class="no">XAMPP</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">access_log</span>
+</span><span class='line'>  <span class="n">tag</span> <span class="n">xampp</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">access</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/source&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;match *.apache.*&gt;</span>
+</span><span class='line'><span class="sr">  index_name adminpack</span>
+</span><span class='line'><span class="sr">  type_name apache</span>
+</span><span class='line'><span class="sr">  type elasticsearch</span>
+</span><span class='line'><span class="sr">  include_tag_key true</span>
+</span><span class='line'><span class="sr">  tag_key @log_name</span>
+</span><span class='line'><span class="sr">  host localhost</span>
+</span><span class='line'><span class="sr">  port 9200</span>
+</span><span class='line'><span class="sr">  logstash_format true</span>
+</span><span class='line'><span class="sr">  flush_interval 10s</span>
+</span><span class='line'><span class="sr">&lt;/m</span><span class="n">atch</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ td-agent</span></code></pre></td></tr></table></div></figure>
+
+
+<p>で、td-agentを起動します。</p>
+
+<p>これで準備はできたのですが、トラブル発生。
+td-agentでエラーが発生しました。</p>
+
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>2013-12-18 17:05:29 +0900 [error]: config error file="/usr/local/etc/td-agent/td-agent.conf" error="Unknown output plugin 'elasticsearch'. Run 'gem search -rd fluent-plugin' to find plugins"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>elasticsearchのpluginが見つからないと。。インストールしたはずなのですが。</p>
+
+<p>調べてみると、Fluentdは独自のGEM_HOMEを持っていて、そこにインストールしないとダメらしいです。</p>
+
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ /usr/local/bin/fluent-gem install fluent-plugin-elasticsearch</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これでtd-agentがpluginを見つけてくれました。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RubyMotionアプリでStoryboardを使うには]]></title>
