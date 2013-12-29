@@ -7,8 +7,9 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="$ sudo make me a sandwich This is sampleclass Sample def sample &quot;sample&quot; end
-end class BootstrapLinkRenderer &lt; WillPaginate::ActionView &hellip;">
+	<meta name="description" content="いい加減sass使わないとなと思い、どうせsass使うならcompass入れちゃおうと思いました。
+compass導入にあたり参考にしたのはこちらです。
+http://railscasts.com/episodes/334-compass-css-sprites &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -80,6 +81,98 @@ end class BootstrapLinkRenderer &lt; WillPaginate::ActionView &hellip;">
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/01/14/using-rails-compass/">
+		
+			rails-compass導入に難儀した件</a>
+	</h2>
+	<div class="entry-content">
+		<p>いい加減sass使わないとなと思い、どうせsass使うならcompass入れちゃおうと思いました。
+compass導入にあたり参考にしたのはこちらです。
+<a href="http://railscasts.com/episodes/334-compass-css-sprites">http://railscasts.com/episodes/334-compass-css-sprites</a></p>
+
+<p>こちらのとおりにやってサーバーを起動してアクセスしたところ、
+&#8220;File to import not found or unreadable: compass&#8221;
+のエラー。
+ググってみると、rails-compassの導入にはRailsのバージョンとかなにやらが絡んでいろんな症状が出ている模様。</p>
+
+<p><a href="https://github.com/Compass/compass-rails/issues/19">https://github.com/Compass/compass-rails/issues/19</a>
+を眺めていきますと、どうもassetsグループの中に定義しないやり方が有力のようなのでやってみました。
+結果、それでうまくいきました。</p>
+
+<figure class='code'><figcaption><span>変更前Gemfile </span></figcaption>
+<div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
+</span><span class='line'>  gem 'sass-rails',    '~> 3.2.3'
+</span><span class='line'>  gem 'coffee-rails',  '~> 3.2.1'
+</span><span class='line'>
+</span><span class='line'>  # See https://github.com/sstephenson/execjs#readme for more supported
+</span><span class='line'>  runtimes
+</span><span class='line'>  # gem 'therubyracer',  :platform => :ruby
+</span><span class='line'>
+</span><span class='line'>  gem 'uglifier',  '>= 1.0.3'
+</span><span class='line'>  gem 'compass'
+</span><span class='line'>  gem 'compass-rails'
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>変更後Gemfile </span></figcaption>
+<div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>gem 'sass-rails',    '~> 3.2.5'
+</span><span class='line'>gem 'coffee-rails',  '~> 3.2.1'
+</span><span class='line'>
+</span><span class='line'># See https://github.com/sstephenson/execjs#readme for more supported
+</span><span class='line'>runtimes
+</span><span class='line'># gem 'therubyracer',  :platform => :ruby
+</span><span class='line'>
+</span><span class='line'>gem 'uglifier',  '>= 1.0.3'
+</span><span class='line'>gem 'compass'
+</span><span class='line'>gem 'compass-rails'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>assetsグループとはなんなのか・・
+asset pipelineを支えるsprocketsのためのほにゃららだと思うのですが、そこから外しちゃうんだ・・ということでメモっておこうと思いました。</p>
+
+<p>ちなみにこの難儀したときの環境は
+ruby 1.9.3p362
+Rails 3.2.9
+でした。
+今現在Railsは重大なSecurity Fixがあったため3.2.10にアップデートすべきですね。
+<a href="http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/">http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T14:54:00+09:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2013/01/14/using-rails-compass//blog/page/2/index.html#disqus_thread">Comments</a></div>
+	
+</div></article>
 
 
     <article class="post">

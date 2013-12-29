@@ -7,7 +7,8 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="Elasticsearchすげーよ、なんでいままで使ってなかったんだろう！的なツイートを見かけて、おおこれは触っておかなければ、と思い立ちました。 ElasticsearchにRESTでデータを投げ込んで、それをKibana3で見てみましたが、なんだかピンとこなかったので、 &hellip;">
+	<meta name="description" content="この前、手元のMac OS X上にFluentd + Elasticsearch + Kibana3の環境を作ってみました。
+けど、こういうのは仮想環境上に作っておくのがなにかと便利です。 Vagrantの最近のアップデートでprovisioningにDockerが使えるようになりました。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -79,6 +80,78 @@
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/12/29/docker/">
+		
+			apache-loggen + Fluentd + Elasticsearch + Kibana3をVagrant with Dockerで動かしてみる</a>
+	</h2>
+	<div class="entry-content">
+		<p><img src="/images/2013-12-29-docker/kibana3.png">
+この前、手元のMac OS X上にFluentd + Elasticsearch + Kibana3の環境を作ってみました。
+けど、こういうのは仮想環境上に作っておくのがなにかと便利です。</p>
+
+<p>Vagrantの最近のアップデートでprovisioningにDockerが使えるようになりました。
+これはDocker使って環境作ったらかっこええんちゃう？と思ったら、すでにやっている方がいました。<br/>
+<a href="http://blog.riywo.com/2013/12/14/155617">簡単！Vagrant+Docker+td-agent+Elasticsearch+Kibanaで流行に乗ろう</a></p>
+
+<p>こちらを参考にDockerを触ってみて、Dockerの雰囲気と面白さがなんとなく感じられました。<br/>
+ただ、Kibanaでいい感じの表示をするためにはある程度のデータがあったほうがいいので、apache-loggenでデータを自動生成するのも混ぜたいなと思いました。<br/>
+そこでできあがったのがこちらになります。<br/>
+<a href="https://github.com/s5ot/vagrant-docker-td-es-kibana-sample">vagrant-docker-td-es-kibana-sample</a></p>
+
+<p>vagrant upすればapache-loggenがデータを作り続け、Fluentd のtailで Elasticsearch へ流し続けてます。<br/>
+http://localhost:5555 でご覧ください。
+Kibanaの使い方の練習ができます。</p>
+
+<h3>Dockerに関して湧いた疑問</h3>
+
+<p>ImageをBuildして最後にミドルウェアなりを起動するときにENTRYPOINTで起動するケースと、CMDでrun.shを叩いて起動するタイプがある。
+これはどういう使い分けなんかな？と思ったけど、マニュアルに書いてあった。<br/>
+<a href="http://docs.docker.io/en/latest/use/builder/">Build Images (Dockerfile Reference)</a></p>
+
+<p>コンテナの起動時にconfig的なデフォルト値を与えて起動したいなら、CMDでrun.shのようなものを使う。CMDはImageのBuild時には実行されない。固定のバイナリを叩いてコンテナを起動するならENTRYPOINTを使う。<br/>
+というように理解しました。</p>
+
+<h3>あとやりたいこと</h3>
+
+<h4>Kibanaのアップデート</h4>
+
+<p>Kibana3のイメージは<a href="arcus/kibana">https://github.com/arcus-io/docker-kibana</a>を使ってるのですが、これはKibana 3 milestone 2になってます。本家はもっと新しいのが出ていてかなり機能が変わってるようなのでアップデートしたいところ。</p>
+
+<h4>apache-loggenコンテナ</h4>
+
+<p>今のところ、apache-loggenはtd-agentコンテナに同居しているのですが、apache-loggenだけのコンテナを作り、td-agentとDockerのmount Volumes機能で連携するのがスマートだと考えています。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-29T16:23:00+09:00" pubdate data-updated="true">Dec 29<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2013/12/29/docker//index.html#disqus_thread">Comments</a></div>
+	
+</div></article>
 
 
     <article class="post">
@@ -817,98 +890,6 @@ IPアドレスは他の機器とかぶらないようにします。（192.168.1
 </div>
 	
 		<div class="comments"><a href="/blog/2013/02/24/kindle-paperwhite-cant-wifi//index.html#disqus_thread">Comments</a></div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/01/14/using-rails-compass/">
-		
-			rails-compass導入に難儀した件</a>
-	</h2>
-	<div class="entry-content">
-		<p>いい加減sass使わないとなと思い、どうせsass使うならcompass入れちゃおうと思いました。
-compass導入にあたり参考にしたのはこちらです。
-<a href="http://railscasts.com/episodes/334-compass-css-sprites">http://railscasts.com/episodes/334-compass-css-sprites</a></p>
-
-<p>こちらのとおりにやってサーバーを起動してアクセスしたところ、
-&#8220;File to import not found or unreadable: compass&#8221;
-のエラー。
-ググってみると、rails-compassの導入にはRailsのバージョンとかなにやらが絡んでいろんな症状が出ている模様。</p>
-
-<p><a href="https://github.com/Compass/compass-rails/issues/19">https://github.com/Compass/compass-rails/issues/19</a>
-を眺めていきますと、どうもassetsグループの中に定義しないやり方が有力のようなのでやってみました。
-結果、それでうまくいきました。</p>
-
-<figure class='code'><figcaption><span>変更前Gemfile </span></figcaption>
-<div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
-</span><span class='line'>  gem 'sass-rails',    '~> 3.2.3'
-</span><span class='line'>  gem 'coffee-rails',  '~> 3.2.1'
-</span><span class='line'>
-</span><span class='line'>  # See https://github.com/sstephenson/execjs#readme for more supported
-</span><span class='line'>  runtimes
-</span><span class='line'>  # gem 'therubyracer',  :platform => :ruby
-</span><span class='line'>
-</span><span class='line'>  gem 'uglifier',  '>= 1.0.3'
-</span><span class='line'>  gem 'compass'
-</span><span class='line'>  gem 'compass-rails'
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>変更後Gemfile </span></figcaption>
-<div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>group :assets do
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>gem 'sass-rails',    '~> 3.2.5'
-</span><span class='line'>gem 'coffee-rails',  '~> 3.2.1'
-</span><span class='line'>
-</span><span class='line'># See https://github.com/sstephenson/execjs#readme for more supported
-</span><span class='line'>runtimes
-</span><span class='line'># gem 'therubyracer',  :platform => :ruby
-</span><span class='line'>
-</span><span class='line'>gem 'uglifier',  '>= 1.0.3'
-</span><span class='line'>gem 'compass'
-</span><span class='line'>gem 'compass-rails'</span></code></pre></td></tr></table></div></figure>
-
-
-<p>assetsグループとはなんなのか・・
-asset pipelineを支えるsprocketsのためのほにゃららだと思うのですが、そこから外しちゃうんだ・・ということでメモっておこうと思いました。</p>
-
-<p>ちなみにこの難儀したときの環境は
-ruby 1.9.3p362
-Rails 3.2.9
-でした。
-今現在Railsは重大なSecurity Fixがあったため3.2.10にアップデートすべきですね。
-<a href="http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/">http://weblog.rubyonrails.org/2013/1/8/Rails-3-2-11-3-1-10-3-0-19-and-2-3-15-have-been-released/</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-14T14:54:00+09:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-</div>
-	
-		<div class="comments"><a href="/blog/2013/01/14/using-rails-compass//index.html#disqus_thread">Comments</a></div>
 	
 </div></article>
 
