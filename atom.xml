@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2013-12-29T17:56:13+09:00</updated>
+  <updated>2013-12-29T17:57:45+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -29,7 +29,7 @@
 <p>こちらを参考にDockerを触ってみて、Dockerの雰囲気と面白さがなんとなく感じられました。<br/>
 ただ、Kibanaでいい感じの表示をするためにはある程度のデータがあったほうがいいので、apache-loggenでデータを自動生成するのも混ぜたいなと思いました。<br/>
 そこでできあがったのがこちらになります。<br/>
-<a href="https://github.com/s5ot/vagrant-docker-td-es-kibana-sample">vagrant-docker-td-es-kibana-sample</a></p>
+<a href="https://github.com/s5ot/vagrant-docker-td-es-kibana-sample">s5ot / vagrant-docker-td-es-kibana-sample</a></p>
 
 <p>vagrant upすればapache-loggenがデータを作り続け、Fluentd のtailで Elasticsearch へ流し続けてます。<br/>
 http://localhost:5555 でご覧ください。
