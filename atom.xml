@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2013-12-29T17:58:13+09:00</updated>
+  <updated>2013-12-29T17:59:28+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -48,7 +48,7 @@ Kibanaの使い方の練習ができます。</p>
 
 <h4>Kibanaのアップデート</h4>
 
-<p>Kibana3のイメージは<a href="arcus/kibana">https://github.com/arcus-io/docker-kibana</a>を使ってるのですが、これはKibana 3 milestone 2になってます。本家はもっと新しいのが出ていてかなり機能が変わってるようなのでアップデートしたいところ。</p>
+<p>Kibana3のイメージは<a href="https://github.com/arcus-io/docker-kibana">arcus/kibana</a>を使ってるのですが、これはKibana 3 milestone 2になってます。本家はもっと新しいのが出ていてかなり機能が変わってるようなのでアップデートしたいところ。</p>
 
 <h4>apache-loggenコンテナ</h4>
 
