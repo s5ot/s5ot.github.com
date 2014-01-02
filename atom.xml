@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2013-12-29T18:00:25+09:00</updated>
+  <updated>2014-01-02T16:18:46+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOSのAPNsを試してみた]]></title>
+    <link href="http://s5ot.github.io/blog/2014/01/02/apnssample/"/>
+    <updated>2014-01-02T16:07:00+09:00</updated>
+    <id>http://s5ot.github.io/blog/2014/01/02/apnssample</id>
+    <content type="html"><![CDATA[<p><img src="http://s5ot.github.io/images/2014-01-02-apnssample/push.png"><br/>
+あけましておめでとうございます。<br/>
+Apple Push Notificationサービス（APNs）を自分で動かしたことがなかったので試してみました。</p>
+
+<p>ggってみると、こちらがいろんなところからお手本として参照されているようです。<br/>
+確かにとても親切な解説になっているので、これでAPNsをバッチリ試すことができました。<br/>
+iOS6向けと書いてますが、iOS7でも特に違いはありません。<br/>
+<a href="http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1">Apple Push Notification Services in iOS 6 Tutorial: Part 1/2</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[apache-loggen + Fluentd + Elasticsearch + Kibana3をVagrant with Dockerで動かしてみる]]></title>

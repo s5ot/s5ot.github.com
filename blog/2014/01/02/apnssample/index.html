@@ -3,12 +3,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>apache-loggen + Fluentd + Elasticsearch + Kibana3をVagrant with Dockerで動かしてみる - s5ot.send(:blog)</title>
+	<title>iOSのAPNsを試してみた - s5ot.send(:blog)</title>
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="この前、手元のMac OS X上にFluentd + Elasticsearch + Kibana3の環境を作ってみました。
-けど、こういうのは仮想環境上に作っておくのがなにかと便利です。 Vagrantの最近のアップデートでprovisioningにDockerが使えるようになりました。 &hellip;">
+	<meta name="description" content="あけましておめでとうございます。
+Apple Push Notificationサービス（APNs）を自分で動かしたことがなかったので試してみました。 ggってみると、こちらがいろんなところからお手本として参照されているようです。
+確かにとても親切な解説になっているので、 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -80,42 +81,15 @@
   
   
   <div id="content" class="inner"><article class="post">
-	<h2 class="title">apache-loggen + Fluentd + Elasticsearch + Kibana3をVagrant with Dockerで動かしてみる</h2>
-	<div class="entry-content"><p><img src="/images/2013-12-29-docker/kibana3.png">
-この前、手元のMac OS X上にFluentd + Elasticsearch + Kibana3の環境を作ってみました。
-けど、こういうのは仮想環境上に作っておくのがなにかと便利です。</p>
+	<h2 class="title">iOSのAPNsを試してみた</h2>
+	<div class="entry-content"><p><img src="/images/2014-01-02-apnssample/push.png"><br/>
+あけましておめでとうございます。<br/>
+Apple Push Notificationサービス（APNs）を自分で動かしたことがなかったので試してみました。</p>
 
-<p>Vagrantの最近のアップデートでprovisioningにDockerが使えるようになりました。
-これはDocker使って環境作ったらかっこええんちゃう？と思ったら、すでにやっている方がいました。<br/>
-<a href="http://blog.riywo.com/2013/12/14/155617">簡単！Vagrant+Docker+td-agent+Elasticsearch+Kibanaで流行に乗ろう</a></p>
-
-<p>こちらを参考にDockerを触ってみて、Dockerの雰囲気と面白さがなんとなく感じられました。<br/>
-ただ、Kibanaでいい感じの表示をするためにはある程度のデータがあったほうがいいので、apache-loggenでデータを自動生成するのも混ぜたいなと思いました。<br/>
-そこでできあがったのがこちらになります。<br/>
-<a href="https://github.com/s5ot/vagrant-docker-td-es-kibana-sample">s5ot / vagrant-docker-td-es-kibana-sample</a></p>
-
-<p>vagrant upすればapache-loggenがデータを作り続け、Fluentd のtailで Elasticsearch へ流し続けてます。<br/>
-http://localhost:5555 でご覧ください。
-Kibanaの使い方の練習ができます。</p>
-
-<h3>Dockerに関して湧いた疑問</h3>
-
-<p>ImageをBuildして最後にミドルウェアなりを起動するときにENTRYPOINTで起動するケースと、CMDでrun.shを叩いて起動するタイプがある。
-これはどういう使い分けなんかな？と思ったけど、マニュアルに書いてあった。<br/>
-<a href="http://docs.docker.io/en/latest/use/builder/">Build Images (Dockerfile Reference)</a></p>
-
-<p>コンテナの起動時にconfig的なデフォルト値を与えて起動したいなら、CMDでrun.shのようなものを使う。CMDはImageのBuild時には実行されない。固定のバイナリを叩いてコンテナを起動するならENTRYPOINTを使う。<br/>
-というように理解しました。</p>
-
-<h3>あとやりたいこと</h3>
-
-<h4>Kibanaのアップデート</h4>
-
-<p>Kibana3のイメージは<a href="https://github.com/arcus-io/docker-kibana">arcus/kibana</a>を使ってるのですが、これはKibana 3 milestone 2になってます。本家はもっと新しいのが出ていてかなり機能が変わってるようなのでアップデートしたいところ。</p>
-
-<h4>apache-loggenコンテナ</h4>
-
-<p>今のところ、apache-loggenはtd-agentコンテナに同居しているのですが、apache-loggenだけのコンテナを作り、td-agentとDockerのmount Volumes機能で連携するのがスマートだと考えています。</p>
+<p>ggってみると、こちらがいろんなところからお手本として参照されているようです。<br/>
+確かにとても親切な解説になっているので、これでAPNsをバッチリ試すことができました。<br/>
+iOS6向けと書いてますが、iOS7でも特に違いはありません。<br/>
+<a href="http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1">Apple Push Notification Services in iOS 6 Tutorial: Part 1/2</a></p>
 </div>
 
 
@@ -132,12 +106,12 @@ Kibanaの使い方の練習ができます。</p>
   
 
 
-<time datetime="2013-12-29T16:23:00+09:00" pubdate data-updated="true">Dec 29<span>th</span>, 2013</time></div>
+<time datetime="2014-01-02T16:07:00+09:00" pubdate data-updated="true">Jan 2<span>nd</span>, 2014</time></div>
 	<div class="tags">
 
 </div>
 	
-		<div class="comments"><a href="/blog/2013/12/29/docker/#disqus_thread">Comments</a></div>
+		<div class="comments"><a href="/blog/2014/01/02/apnssample/#disqus_thread">Comments</a></div>
 	
 </div></article>
 
@@ -180,8 +154,8 @@ Kibanaの使い方の練習ができます。</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://s5ot.github.io/blog/2013/12/29/docker/';
-        var disqus_url = 'http://s5ot.github.io/blog/2013/12/29/docker/';
+        var disqus_identifier = 'http://s5ot.github.io/blog/2014/01/02/apnssample/';
+        var disqus_url = 'http://s5ot.github.io/blog/2014/01/02/apnssample/';
         var disqus_script = 'embed.js';
       
     (function () {
