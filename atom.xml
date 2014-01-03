@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2014-01-02T16:18:46+09:00</updated>
+  <updated>2014-01-04T01:18:19+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RubyMotionアプリでTestFlightを使ってみる]]></title>
+    <link href="http://s5ot.github.io/blog/2014/01/04/rubymotion-with-testflight/"/>
+    <updated>2014-01-04T00:48:00+09:00</updated>
+    <id>http://s5ot.github.io/blog/2014/01/04/rubymotion-with-testflight</id>
+    <content type="html"><![CDATA[<p><img src="http://s5ot.github.io/images/2014-01-04-testflight/testflight.png">
+前々からTestFlightを使ってみたいと思ってたのですがなかなかできてなかったのでとりあえずやってみました。</p>
+
+<p>RubyMotionアプリでTestFlightを使うにあたっては、motion-testflightという便利なgemがあります。  これを素直に使わせてもらいます。 <br/>
+<a href="https://github.com/HipByte/motion-testflight">motion-testflight</a></p>
+
+<p>こちらを使うとRakeタスク「testflight」でビルドしたアプリをTestFlightへアップロードして配布することができます。</p>
+
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle exec rake testflight notes="zomg!"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このRakeタスクを実行するにはRakefileに3つのtokenを設定する必要があるのですが、それらをどこから得るのか分かりにくかったのでメモしておきます。</p>
+
+<h3>api_token</h3>
+
+<p><a href=https://testflightapp.com/account/#api>https://testflightapp.com/account/#api</a></p>
+
+<h3>team_token</h3>
+
+<p><a href=https://testflightapp.com/dashboard/team/edit/?next=/api/doc/>https://testflightapp.com/dashboard/team/edit/?next=/api/doc/</a></p>
+
+<h3>app_token</h3>
+
+<p>Appsタブからアプリを登録すると発行される</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOSのAPNsを試してみた]]></title>

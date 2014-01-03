@@ -7,9 +7,7 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="あけましておめでとうございます。
-Apple Push Notificationサービス（APNs）を自分で動かしたことがなかったので試してみました。 ggってみると、こちらがいろんなところからお手本として参照されているようです。
-確かにとても親切な解説になっているので、 &hellip;">
+	<meta name="description" content="前々からTestFlightを使ってみたいと思ってたのですがなかなかできてなかったのでとりあえずやってみました。 RubyMotionアプリでTestFlightを使うにあたっては、motion-testflightという便利なgemがあります。 これを素直に使わせてもらいます。 motion- &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -81,6 +79,67 @@ Apple Push Notificationサービス（APNs）を自分で動かしたことが�
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/01/04/rubymotion-with-testflight/">
+		
+			RubyMotionアプリでTestFlightを使ってみる</a>
+	</h2>
+	<div class="entry-content">
+		<p><img src="/images/2014-01-04-testflight/testflight.png">
+前々からTestFlightを使ってみたいと思ってたのですがなかなかできてなかったのでとりあえずやってみました。</p>
+
+<p>RubyMotionアプリでTestFlightを使うにあたっては、motion-testflightという便利なgemがあります。  これを素直に使わせてもらいます。 <br/>
+<a href="https://github.com/HipByte/motion-testflight">motion-testflight</a></p>
+
+<p>こちらを使うとRakeタスク「testflight」でビルドしたアプリをTestFlightへアップロードして配布することができます。</p>
+
+<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle exec rake testflight notes="zomg!"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このRakeタスクを実行するにはRakefileに3つのtokenを設定する必要があるのですが、それらをどこから得るのか分かりにくかったのでメモしておきます。</p>
+
+<h3>api_token</h3>
+
+<p><a href=https://testflightapp.com/account/#api>https://testflightapp.com/account/#api</a></p>
+
+<h3>team_token</h3>
+
+<p><a href=https://testflightapp.com/dashboard/team/edit/?next=/api/doc/>https://testflightapp.com/dashboard/team/edit/?next=/api/doc/</a></p>
+
+<h3>app_token</h3>
+
+<p>Appsタブからアプリを登録すると発行される</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-04T00:48:00+09:00" pubdate data-updated="true">Jan 4<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2014/01/04/rubymotion-with-testflight//index.html#disqus_thread">Comments</a></div>
+	
+</div></article>
 
 
     <article class="post">
@@ -764,120 +823,6 @@ RubyやRailsのバージョンアップがあったりしてgemがけっこう�
 </div>
 	
 		<div class="comments"><a href="/blog/2013/08/10/copy-xcode-project//index.html#disqus_thread">Comments</a></div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/03/15/ruby-2-dot-0-0-pitfall/">
-		
-			Ruby2.0にアップグレードしてつまづいたこと</a>
-	</h2>
-	<div class="entry-content">
-		<p>Ruby 1.9.3 / Rails 3.2.x でアプリを開発しています。</p>
-
-<p>このたびRuby 2.0がめでたくリリースされたのでアップグレードしてみました。</p>
-
-<p>で、ちょいちょいつまづいたことをメモしておきます。</p>
-
-<h3>つまづき：RVM on Mac OS Xでインストールエラー</h3>
-
-<p>まずRuby2.0のインストールにつまづきました。
-ビルドでopensslがほにゃららのエラーがでてこけました。</p>
-
-<h3>対策： 下記のとおり。</h3>
-
-<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ brew update
-</span><span class='line'>$ brew install openssl
-</span><span class='line'>$ rvm get head
-</span><span class='line'>$ rvm install ruby-2.0.0 --skip-openssl --with-opt-dir="`brew --prefix openssl`"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>(参考）
-<a href="https://gist.github.com/jfirebaugh/4007524">Installing Ruby 2.0.0-preview1 with RVM on OS X</a>
-　
-　
-　
-　
-　
-　
-　
-　
-　</p>
-
-<h3>つまづき：iconvがない。</h3>
-
-<p>iconvが標準でついてこなくなりました。</p>
-
-<h3>対策：String#encodeで置き換える。</h3>
-
-<h3>つまづき：respond_to?の仕様が変わった。</h3>
-
-<p>protectedメソッドにrespond_to?するとfalseが返ってくるようになりました。
-私はテストがfailしたことがきっかけでこれが分かったのですが、最初はなにが悪いのかわからなくて混乱しました。</p>
-
-<h3>対策：Ruby1.9系と互換を保つにはprotected_to?の第二引数にtrueを指定する。</h3>
-
-<p>true指定でprotected/privateメソッドもrespondableになる。</p>
-
-<p>(参考）
-<a href="http://t.co/b410B9IwIv">PROTECTED METHODS AND RUBY 2.0</a></p>
-
-<h3>つまづき: PassengerのApacheモジュールがビルドできない。</h3>
-
-<p>ビルド中にこんなのを吐いて落ちました。</p>
-
-<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>cannot load such file -- rubygems/builder</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>対策：Stableな3.0.19はRuby2.0に対応していないようです。</h3>
-
-<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ gem i passenger --pre</span></code></pre></td></tr></table></div></figure>
-
-
-<p>で4.0.0 RCのPassegerをインストールしてビルドします。</p>
-
-<p>（参考）
-<a href="https://github.com/FooBarWidget/passenger/pull/71">passenger-install-apache2-module doesn&#8217;t work on ruby 2.0</a></p>
-
-<p>あと、この4.0.0 RCのPassegerではRails.rootにconfig.ruがないとRails 1 or Rails 2と見なされて起動しません。
-こんなエラーメッセージが出ました。</p>
-
-<blockquote><p>This application is a Rails 3 application,  but it was wrongly detected as a Rails 1 or Rails 2 application.</p>
-
-<p>This is probably a bug in Phusion Passenger,  so please report it</p></blockquote>
-
-<p>なのでconfig.ruをお忘れなく。</p>
-
-<p>（参考）
-<a href="https://code.google.com/p/phusion-passenger/issues/detail?id=807">Passenger 3.9.1.beta incorrectly detects Redmine 2.2.1 as Rails 1/2 app</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-15T14:39:00+09:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-</div>
-	
-		<div class="comments"><a href="/blog/2013/03/15/ruby-2-dot-0-0-pitfall//index.html#disqus_thread">Comments</a></div>
 	
 </div></article>
 
