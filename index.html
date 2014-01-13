@@ -7,7 +7,7 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="前々からTestFlightを使ってみたいと思ってたのですがなかなかできてなかったのでとりあえずやってみました。 RubyMotionアプリでTestFlightを使うにあたっては、motion-testflightという便利なgemがあります。 これを素直に使わせてもらいます。 motion- &hellip;">
+	<meta name="description" content="アプリックスのBeaconモジュール「BM1」を入手したので（お借りしたので）、試しています。 BM1にはBeaconのデータを書き換えることができるアプリが提供されていて、このアプリからproximityUUID, major, minor, measured &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -79,6 +79,69 @@
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/01/14/ibeacon/">
+		
+			アプリックスのBM1でiBeaconを試す</a>
+	</h2>
+	<div class="entry-content">
+		<p><img src="/images/2014-01-14-bm1/bm1.png"></p>
+
+<p>アプリックスのBeaconモジュール「BM1」を入手したので（お借りしたので）、試しています。</p>
+
+<p>BM1にはBeaconのデータを書き換えることができるアプリが提供されていて、このアプリからproximityUUID, major, minor, measured powerを書き換えることができます。<br/>
+<img src="/images/2014-01-14-bm1/bm1setup.png"></p>
+
+<p>BM1からの電波を受信するアプリを作ってみました。<br/>
+参考にさせてもらったのはこちらです。     <br/>
+<a href="https://github.com/suwa-yuki/BeaconSample">BeaconSample</a></p>
+
+<p><img src="/images/2014-01-14-bm1/bm1receiver.png"></p>
+
+<h3>思ったこと</h3>
+
+<p>複数のBM1を運用するケースで、ProximityUUIDをアプリ経由で書き換えるのは手間がかかる。一括で管理するアプリがあると便利かも。。出荷時にアプリックスに一括設定を頼むことはできるみたい。あ、別途提供予定らしいですね。</p>
+
+<p>BM1で使えるProximityUUIDはどこから発行されているのだろう？<br/>
+国際規格に基づいてアプリックス社で生成されているらしいのですが。。<br/>
+もし同じUUIDが他で使われていた場合は損害賠償を求めることができるらしいです。</p>
+
+<p>BM1設定アプリでmeasured powerを設定できるけども、これはCoreLocationのAPIでは取得できないもよう。CoreBluetoothのAPIからは取れると思うのだけれども。</p>
+
+<p>BM1の電波を受信して動作するアプリがProximityUUIDをどうやって得るか。<br/>
+サーバーに問い合わせる形になりますよね。<br/>
+やっぱりサーバーサイドの管理アプリが必要ですよね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-14T01:39:00+09:00" pubdate data-updated="true">Jan 14<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2014/01/14/ibeacon//index.html#disqus_thread">Comments</a></div>
+	
+</div></article>
 
 
     <article class="post">
@@ -763,66 +826,6 @@ RubyやRailsのバージョンアップがあったりしてgemがけっこう�
 </div>
 	
 		<div class="comments"><a href="/blog/2013/08/19/remove-gems//index.html#disqus_thread">Comments</a></div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/08/10/copy-xcode-project/">
-		
-			Xcodeプロジェクトをコピーして新しいプロジェクトをつくる</a>
-	</h2>
-	<div class="entry-content">
-		<p>既存のXcodeプロジェクトをコピーして新しいプロジェクトを作って開発する必要がありました。<br/>
-単純にファイルコピーしてもダメなんだろうなーと思ってたらやっぱりダメで、いろいろとやらないといけませんでした。<br/>
-環境はXcode4.6.3です。</p>
-
-<p>まず参考にしたのはこちらです。<br/>
-<a href="http://hocosoft.com/memo/%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E5%90%8D%E3%81%AE%E5%A4%89%E6%9B%B4/485/">Xcode4.5でiOSアプリのプロジェクト名を変更する方法</a><br/>
-ざっとやることは</p>
-
-<ul>
-<li>Identity の「Project Name」の項目を書き換える</li>
-<li>スキーム名を変更する</li>
-<li>グループ名を変更する</li>
-<li>プロジェクト名を選択して[Build Settings]から古いプロジェクト名を新しいプロジェクト名に書き換える</li>
-</ul>
-
-
-<p>で、これで基本的に完了な感じですが、自分の場合はARCがらみのエラーがたくさん出てきました。<br/>
-これはプロジェクトのコピーではソースコードファイルのCompiler flagsは移行されないことが原因でした。<br/>
-元プロジェクトのCompiler flagsの設定を新プロジェクトに設定して解消。</p>
-
-<p>さらにこのあとにplistの警告が出てきました。<br/>
-これには下記のとおりCopy Bundle Resoucesからplistをいったん取り除いてから再ビルドで解決しました。<br/>
-<a href="http://cheesememo.blog39.fc2.com/blog-entry-564.html">he Copy Bundle Resources build phase contains this target&#8217;s Info.plist file …</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-10T17:40:00+09:00" pubdate data-updated="true">Aug 10<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-</div>
-	
-		<div class="comments"><a href="/blog/2013/08/10/copy-xcode-project//index.html#disqus_thread">Comments</a></div>
 	
 </div></article>
 
