@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2014-01-17T01:30:06+09:00</updated>
+  <updated>2014-01-17T07:35:40+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -20,7 +20,7 @@
     <id>http://s5ot.github.io/blog/2014/01/16/clock-process</id>
     <content type="html"><![CDATA[<p><img src="http://s5ot.github.io/images/2014-01-16-clock/clock.jpg"></p>
 
-<p>ちょっとした定期処理を事案が発生しました。できればお金をかけずにやりたい。<br/>
+<p>ちょっとした定期処理をやりたい事案が発生しました。できればお金をかけずにやりたい。<br/>
 ということでここはHerokuでなんとかできないか調べてみたところ、Clock Processというのが期待どおりな感じでした。
 <a href="https://devcenter.heroku.com/articles/clock-processes-ruby">Scheduled Jobs and Custom Clock Processes in Ruby with Clockwork</a></p>
 
