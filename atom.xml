@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2014-01-14T15:31:25+09:00</updated>
+  <updated>2014-01-17T01:30:06+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Herokuで定期処理(Clock Process)]]></title>
+    <link href="http://s5ot.github.io/blog/2014/01/16/clock-process/"/>
+    <updated>2014-01-16T23:13:00+09:00</updated>
+    <id>http://s5ot.github.io/blog/2014/01/16/clock-process</id>
+    <content type="html"><![CDATA[<p><img src="http://s5ot.github.io/images/2014-01-16-clock/clock.jpg"></p>
+
+<p>ちょっとした定期処理を事案が発生しました。できればお金をかけずにやりたい。<br/>
+ということでここはHerokuでなんとかできないか調べてみたところ、Clock Processというのが期待どおりな感じでした。
+<a href="https://devcenter.heroku.com/articles/clock-processes-ruby">Scheduled Jobs and Custom Clock Processes in Ruby with Clockwork</a></p>
+
+<p>clockworkというgemを使って定期処理を書いて、Herokuで常駐プロセスが定期処理を実行してくれるというものです。
+<a href="https://github.com/tomykaira/clockwork">tomykaira / clockwork</a><br/>
+また、clockworkを使うHerokuアプリのひな形を作ってくれるシェルスクリプトがあったりしてありがたい感じです。<br/>
+<a href="https://gist.github.com/tomykaira/1312172">tomykaira / clockwork-init.sh</a><br/>
+clockworkはシンプルなAPIでやりたいことをすぐに書ける感じになってますが、かなり高機能でもあるようです。こちらが詳しいです。<br/>
+<a href="http://www.ownway.info/Ruby/index.php?clockwork%2Fabout">clockwork について</a></p>
+
+<p>ということで、ちょっとした定期処理を書くならHerokuのClock Processが便利という話でした。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[アプリックスのBM1でiBeaconを試す]]></title>

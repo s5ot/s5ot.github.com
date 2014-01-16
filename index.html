@@ -7,7 +7,9 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="アプリックスのBeaconモジュール「BM1」を入手したので（お借りしたので）、試しています。 BM1にはBeaconのデータを書き換えることができるアプリが提供されていて、このアプリからproximityUUID, major, minor, measured &hellip;">
+	<meta name="description" content="ちょっとした定期処理を事案が発生しました。できればお金をかけずにやりたい。
+ということでここはHerokuでなんとかできないか調べてみたところ、Clock Processというのが期待どおりな感じでした。
+Scheduled Jobs and Custom Clock Processes in &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -79,6 +81,57 @@
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/01/16/clock-process/">
+		
+			Herokuで定期処理(Clock Process)</a>
+	</h2>
+	<div class="entry-content">
+		<p><img src="/images/2014-01-16-clock/clock.jpg"></p>
+
+<p>ちょっとした定期処理を事案が発生しました。できればお金をかけずにやりたい。<br/>
+ということでここはHerokuでなんとかできないか調べてみたところ、Clock Processというのが期待どおりな感じでした。
+<a href="https://devcenter.heroku.com/articles/clock-processes-ruby">Scheduled Jobs and Custom Clock Processes in Ruby with Clockwork</a></p>
+
+<p>clockworkというgemを使って定期処理を書いて、Herokuで常駐プロセスが定期処理を実行してくれるというものです。
+<a href="https://github.com/tomykaira/clockwork">tomykaira / clockwork</a><br/>
+また、clockworkを使うHerokuアプリのひな形を作ってくれるシェルスクリプトがあったりしてありがたい感じです。<br/>
+<a href="https://gist.github.com/tomykaira/1312172">tomykaira / clockwork-init.sh</a><br/>
+clockworkはシンプルなAPIでやりたいことをすぐに書ける感じになってますが、かなり高機能でもあるようです。こちらが詳しいです。<br/>
+<a href="http://www.ownway.info/Ruby/index.php?clockwork%2Fabout">clockwork について</a></p>
+
+<p>ということで、ちょっとした定期処理を書くならHerokuのClock Processが便利という話でした。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-16T23:13:00+09:00" pubdate data-updated="true">Jan 16<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2014/01/16/clock-process//index.html#disqus_thread">Comments</a></div>
+	
+</div></article>
 
 
     <article class="post">
@@ -769,68 +822,6 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 </div>
 	
 		<div class="comments"><a href="/blog/2013/11/05/redmine-google-apps-account-openid//index.html#disqus_thread">Comments</a></div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/08/19/remove-gems/">
-		
-			rvmで入れたgemを削除する</a>
-	</h2>
-	<div class="entry-content">
-		<p>以前はずいぶんrvmのお世話になってましたが、最近の開発環境ではすっかりrbenvを使うようになっています。<br/>
-けれどもサーバー環境ではまだrvmを使い続けてたりしてます。<br/>
-RubyやRailsのバージョンアップがあったりしてgemがけっこうなディスク容量を食っていたので使ってないgemを削除しようと思い立ちました。<br/>
-ちなみにMulti-User Installで入れたrvmなのでコマンドは適当に読み替えてください。</p>
-
-<h3>globalのgemsetを消す</h3>
-
-<p>globalの名前がついたgemsetを消さないと素のgemは消せないようです。 なのでまずglobalを消します。</p>
-
-<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm gemset delete global</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>素のgemを削除する</h3>
-
-<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo gem uninstall -axI `gem list --no-versions`</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Rubyを削除する。Rubyだけ削除してもgemは消されないので注意。</h3>
-
-<figure class='code'><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class=''><span class='line'>$ rvmsudo rvm remove ruby-xxx-pxxx</span></code></pre></td></tr></table></div></figure>
-
-
-<p>参考にさせてもらったのはこちらです！<br/>
-<a href="http://transitive.info/article/ruby/rvm/gemset/">RVM の gemset を使う</a> <br/>
-ありがとうございます！</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-19T22:03:00+09:00" pubdate data-updated="true">Aug 19<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-</div>
-	
-		<div class="comments"><a href="/blog/2013/08/19/remove-gems//index.html#disqus_thread">Comments</a></div>
 	
 </div></article>
 
