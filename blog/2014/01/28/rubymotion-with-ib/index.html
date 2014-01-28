@@ -1,0 +1,236 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RubyMotionアプリでStoryboardを使う（ibを使う） - s5ot.send(:blog)</title>
+	<meta name="author" content="s5ot">
+
+	
+	<meta name="description" content="以前にRubyMotionでStoryboardを使う方法を調べたことがありました。 RubyMotionアプリでStoryboardを使うには まあ使えることは使えたんですが、Storyboardとヘッダファイルの結びつけとかできなくて、あまり実用的でないなあ。。という感じでした。 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="s5ot.send(:blog)" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+  <header id="header" class="inner"><h1><a href="/">s5ot.send(:blog)</a></h1>
+<nav id="main-nav"><ul class="main">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+  <div class="alignleft menu">
+    <a class="button">Menu</a>
+    <div class="container"><ul class="main">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+</div>
+  </div>
+  <div class="alignright search">
+    <a class="button"></a>
+    <div class="container">
+      <form action="http://google.com/search" method="get">
+        <input type="text" name="q" results="0">
+        <input type="hidden" name="q" value="site:s5ot.github.io">
+      </form>
+    </div>
+  </div>
+</nav>
+<nav id="sub-nav" class="alignright">
+  <div class="social">
+    
+    
+    <!--
+    
+    <a class="twitter" href="http://twitter.com/s5ot" title="Twitter">Twitter</a>
+    
+    
+    <a class="github" href="https://github.com/s5ot" title="GitHub">GitHub</a>
+    
+    -->
+    
+    
+    
+    
+    
+    
+    <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+    
+  </div>
+  <form class="search" action="http://google.com/search" method="get">
+    <input class="alignright" type="text" name="q" results="0">
+    <input type="hidden" name="q" value="site:s5ot.github.io">
+  </form>
+</nav>
+
+</header>
+  
+  
+  <div id="content" class="inner"><article class="post">
+	<h2 class="title">RubyMotionアプリでStoryboardを使う（ibを使う）</h2>
+	<div class="entry-content"><iframe src="http://www.flickr.com/photos/47747551@N00/1752001425/in/photolist-3EPsZ8-3K7dF1-49iLB9-4cWUj2-4f6VEo-4hA4yi-4o7GQm-4spNRh-4ATm9o-4CXsqK-4EdxML-4EdxP7-4EdxRC-4RmW3A-4RNNsB-4Stia8-59s7rC-5prazq-5zUybw-5KEpP7-5NQBRu-5SaBAo-5Ze7jL-5ZHv4K-64Nkmy-6a1nCW-6c7Ls9-6j7f45-6jiJyZ-6nEjbB-6nEjci-6nJtLU-6ytjij-6D6Hcy-6WZHcE-72JMGN-79vfT8-7fpFMQ-7jiqAP-7jxPWt-7jGFTD-7k68h4-7kVDtr-7rpxQC-7YtEDK-ddfofL-85yf3Z-aBhkHC-agPLKu-agPLHh-8JKoZv/player/" width="500" height="375" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+
+<p>以前にRubyMotionでStoryboardを使う方法を調べたことがありました。</p>
+
+<p><a href="http://s5ot.github.io/blog/2013/12/13/rubymotion-with-storyboard/">RubyMotionアプリでStoryboardを使うには</a></p>
+
+<p>まあ使えることは使えたんですが、Storyboardとヘッダファイルの結びつけとかできなくて、あまり実用的でないなあ。。という感じでした。<br/>
+最近になって、そういうモヤっとしたところを解決してくれるgemがあることをこちらで知りました。</p>
+
+<p><a href="http://mobiletou.ch/2013/12/%E7%AC%AC%E5%85%AB%E5%9B%9E-rubymotion-%E3%81%A7-interface-builder-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%AB%E3%81%AF%EF%BC%9F">第八回 RubyMotion で Interface Builder を使うには？</a></p>
+
+<p>ということで、こちらで紹介されているibを使ってみました。</p>
+
+<p>ibをインストール後、rake ib:project タスクを実行すると、Storyboard用のXcodeプロジェクトが作成されます。<br/>
+そして rake ib:open タスクを実行すると、Xcodeが起動してStoryboardが表示されます。<br/>
+このときに、ibがRubyMotionで実装したOutletやメソッドを自動でStubs.hファイルに展開してくれます。<br/>
+Outletはoutletクラスメソッドで宣言的に書きます。（下記参照）<br/>
+メソッドはIBActionになります。</p>
+
+<p>具体的には、このように書いておいて rake ib:open を実行すると、</p>
+
+<figure class='code'> <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">NewPostViewController</span> <span class="o">&lt;</span> <span class="no">UIViewController</span>
+</span><span class='line'>  <span class="kp">extend</span> <span class="no">IB</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:addressLabel</span><span class="p">,</span> <span class="no">UILabel</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:detailTextView</span><span class="p">,</span> <span class="no">UITextView</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:tagTextField</span><span class="p">,</span> <span class="no">UITextField</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:scrollView</span><span class="p">,</span> <span class="no">UIScrollView</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:uploadButton</span><span class="p">,</span> <span class="no">UIBarButtonItem</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:manholeImageView</span><span class="p">,</span> <span class="no">UIImageView</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">onSingleTap</span>
+</span><span class='line'>    <span class="sr">//</span> <span class="no">Do</span> <span class="n">something</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="sr">//</span> <span class="n">snip</span><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Stubs.hにはこんな感じで展開されるわけです。</p>
+
+<figure class='code'> <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='c'><span class='line'><span class="err">@</span><span class="n">interface</span> <span class="n">NewPostViewController</span><span class="o">:</span> <span class="n">UIViewController</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UILabel</span> <span class="o">*</span> <span class="n">addressLabel</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UITextView</span> <span class="o">*</span> <span class="n">detailTextView</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UITextField</span> <span class="o">*</span> <span class="n">tagTextField</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UIScrollView</span> <span class="o">*</span> <span class="n">scrollView</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UIBarButtonItem</span> <span class="o">*</span> <span class="n">uploadButton</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UIImageView</span> <span class="o">*</span> <span class="n">manholeImageView</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="p">(</span><span class="n">IBAction</span><span class="p">)</span> <span class="n">onSingleTap</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">@</span><span class="n">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>あとはStoryboardからStubs.hにビーッと線を伸ばして紐付けをしてあければよいわけです。<br/>
+やっぱりStoryboardを使うとビューのコードがググっと減るので便利ですね。全体構成もつかみやすくなるし。<br/>
+これからはibを使っていこうと思ってます。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-28T15:01:00+09:00" pubdate data-updated="true">Jan 28<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2014/01/28/rubymotion-with-ib/#disqus_thread">Comments</a></div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+  <footer id="footer" class="inner">Copyright &copy; 2014
+
+    s5ot
+
+</footer>
+  <script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 's5ot';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://s5ot.github.io/blog/2014/01/28/rubymotion-with-ib/';
+        var disqus_url = 'http://s5ot.github.io/blog/2014/01/28/rubymotion-with-ib/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37441932-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

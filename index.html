@@ -7,9 +7,7 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="ちょっとした定期処理をやりたい事案が発生しました。できればお金をかけずにやりたい。
-ということでここはHerokuでなんとかできないか調べてみたところ、Clock Processというのが期待どおりな感じでした。
-Scheduled Jobs and Custom Clock Processes &hellip;">
+	<meta name="description" content="以前にRubyMotionでStoryboardを使う方法を調べたことがありました。 RubyMotionアプリでStoryboardを使うには まあ使えることは使えたんですが、Storyboardとヘッダファイルの結びつけとかできなくて、あまり実用的でないなあ。。という感じでした。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -81,6 +79,104 @@ Scheduled Jobs and Custom Clock Processes &hellip;">
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/01/28/rubymotion-with-ib/">
+		
+			RubyMotionアプリでStoryboardを使う（ibを使う）</a>
+	</h2>
+	<div class="entry-content">
+		<iframe src="http://www.flickr.com/photos/47747551@N00/1752001425/in/photolist-3EPsZ8-3K7dF1-49iLB9-4cWUj2-4f6VEo-4hA4yi-4o7GQm-4spNRh-4ATm9o-4CXsqK-4EdxML-4EdxP7-4EdxRC-4RmW3A-4RNNsB-4Stia8-59s7rC-5prazq-5zUybw-5KEpP7-5NQBRu-5SaBAo-5Ze7jL-5ZHv4K-64Nkmy-6a1nCW-6c7Ls9-6j7f45-6jiJyZ-6nEjbB-6nEjci-6nJtLU-6ytjij-6D6Hcy-6WZHcE-72JMGN-79vfT8-7fpFMQ-7jiqAP-7jxPWt-7jGFTD-7k68h4-7kVDtr-7rpxQC-7YtEDK-ddfofL-85yf3Z-aBhkHC-agPLKu-agPLHh-8JKoZv/player/" width="500" height="375" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+
+<p>以前にRubyMotionでStoryboardを使う方法を調べたことがありました。</p>
+
+<p><a href="http://s5ot.github.io/blog/2013/12/13/rubymotion-with-storyboard/">RubyMotionアプリでStoryboardを使うには</a></p>
+
+<p>まあ使えることは使えたんですが、Storyboardとヘッダファイルの結びつけとかできなくて、あまり実用的でないなあ。。という感じでした。<br/>
+最近になって、そういうモヤっとしたところを解決してくれるgemがあることをこちらで知りました。</p>
+
+<p><a href="http://mobiletou.ch/2013/12/%E7%AC%AC%E5%85%AB%E5%9B%9E-rubymotion-%E3%81%A7-interface-builder-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%AB%E3%81%AF%EF%BC%9F">第八回 RubyMotion で Interface Builder を使うには？</a></p>
+
+<p>ということで、こちらで紹介されているibを使ってみました。</p>
+
+<p>ibをインストール後、rake ib:project タスクを実行すると、Storyboard用のXcodeプロジェクトが作成されます。<br/>
+そして rake ib:open タスクを実行すると、Xcodeが起動してStoryboardが表示されます。<br/>
+このときに、ibがRubyMotionで実装したOutletやメソッドを自動でStubs.hファイルに展開してくれます。<br/>
+Outletはoutletクラスメソッドで宣言的に書きます。（下記参照）<br/>
+メソッドはIBActionになります。</p>
+
+<p>具体的には、このように書いておいて rake ib:open を実行すると、</p>
+
+<figure class='code'> <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">NewPostViewController</span> <span class="o">&lt;</span> <span class="no">UIViewController</span>
+</span><span class='line'>  <span class="kp">extend</span> <span class="no">IB</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:addressLabel</span><span class="p">,</span> <span class="no">UILabel</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:detailTextView</span><span class="p">,</span> <span class="no">UITextView</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:tagTextField</span><span class="p">,</span> <span class="no">UITextField</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:scrollView</span><span class="p">,</span> <span class="no">UIScrollView</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:uploadButton</span><span class="p">,</span> <span class="no">UIBarButtonItem</span>
+</span><span class='line'>  <span class="n">outlet</span> <span class="ss">:manholeImageView</span><span class="p">,</span> <span class="no">UIImageView</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">onSingleTap</span>
+</span><span class='line'>    <span class="sr">//</span> <span class="no">Do</span> <span class="n">something</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="sr">//</span> <span class="n">snip</span><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Stubs.hにはこんな感じで展開されるわけです。</p>
+
+<figure class='code'> <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='c'><span class='line'><span class="err">@</span><span class="n">interface</span> <span class="n">NewPostViewController</span><span class="o">:</span> <span class="n">UIViewController</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UILabel</span> <span class="o">*</span> <span class="n">addressLabel</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UITextView</span> <span class="o">*</span> <span class="n">detailTextView</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UITextField</span> <span class="o">*</span> <span class="n">tagTextField</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UIScrollView</span> <span class="o">*</span> <span class="n">scrollView</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UIBarButtonItem</span> <span class="o">*</span> <span class="n">uploadButton</span><span class="p">;</span>
+</span><span class='line'><span class="err">@</span><span class="n">property</span> <span class="n">IBOutlet</span> <span class="n">UIImageView</span> <span class="o">*</span> <span class="n">manholeImageView</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="p">(</span><span class="n">IBAction</span><span class="p">)</span> <span class="n">onSingleTap</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">@</span><span class="n">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>あとはStoryboardからStubs.hにビーッと線を伸ばして紐付けをしてあければよいわけです。<br/>
+やっぱりStoryboardを使うとビューのコードがググっと減るので便利ですね。全体構成もつかみやすくなるし。<br/>
+これからはibを使っていこうと思ってます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-28T15:01:00+09:00" pubdate data-updated="true">Jan 28<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2014/01/28/rubymotion-with-ib//index.html#disqus_thread">Comments</a></div>
+	
+</div></article>
 
 
     <article class="post">
@@ -768,60 +864,6 @@ karma-e2e.conf.js というE2Eテスト用のkarmaの設定ファイルはつく
 </div>
 	
 		<div class="comments"><a href="/blog/2013/11/25/generator-angular-e2e-test//index.html#disqus_thread">Comments</a></div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/11/05/redmine-google-apps-account-openid/">
-		
-			Google AppsアカウントでRedmineのOpenID認証</a>
-	</h2>
-	<div class="entry-content">
-		<p>Redmineのバージョンは2.3.3です。</p>
-
-<p>ストレートなOpenID認証ではないのですが、こういうユースケースをRedmineで実現しようとしました。</p>
-
-<ol>
-<li>Redmineにユーザーを登録しておく。ユーザーのメールアドレスはGoogle Appsアカウントのメールアドレスにする。</li>
-<li>Redmineのログイン画面でGoogle AppsアカウントのメールアドレスをOpenID URLに入力してログインする。入力されたメールアドレスのドメインをもとにしてGoogle AppsアカウントのOpenID認証を行う。</li>
-<li>認証できたGoogle Appsアカウントのメールアドレスと同じアドレスを持つユーザーがRedmineにいる場合、Redmineのログイン成功とする。</li>
-</ol>
-
-
-<p>RedmineはもともとOpenID認証の機能を備えており、adminでログインして、管理 - 設定 - 認証からOpenIDによるログインを有効にすることができます。<br/>
-しかしこれだけでは上記のようなユースケースを実現できないので、Redmineをカスタマイズしました。こちらに置きました。<br/>
-<a href="https://github.com/s5ot/redmine-google-apps-openid">redmine-google-apps-openid</a></p>
-
-<p>こちらが参考になりました。ありがとうございます。<br/>
-<a href="http://d.hatena.ne.jp/a_kimura/20100407/1270660711">RailsでGoogle AppsのOpenID対応アプリを作る</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-05T15:32:00+09:00" pubdate data-updated="true">Nov 5<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-</div>
-	
-		<div class="comments"><a href="/blog/2013/11/05/redmine-google-apps-account-openid//index.html#disqus_thread">Comments</a></div>
 	
 </div></article>
 
