@@ -1,0 +1,198 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flotでグラフを書いてみる - s5ot.send(:blog)</title>
+	<meta name="author" content="s5ot">
+
+	
+	<meta name="description" content="データビジュアライゼーションが気になる今日この頃です。 D3.jsでグラフを描いてみる
+を読んだのですが、割とシンプルなグラフなのにけっこう面倒くさいと感じました。
+まあD3.jsがグラフに特化してるわけでないからと思います。 人気のKibanaを見たところ、 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="s5ot.send(:blog)" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+  <header id="header" class="inner"><h1><a href="/">s5ot.send(:blog)</a></h1>
+<nav id="main-nav"><ul class="main">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+  <div class="alignleft menu">
+    <a class="button">Menu</a>
+    <div class="container"><ul class="main">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+</div>
+  </div>
+  <div class="alignright search">
+    <a class="button"></a>
+    <div class="container">
+      <form action="http://google.com/search" method="get">
+        <input type="text" name="q" results="0">
+        <input type="hidden" name="q" value="site:s5ot.github.io">
+      </form>
+    </div>
+  </div>
+</nav>
+<nav id="sub-nav" class="alignright">
+  <div class="social">
+    
+    
+    <!--
+    
+    <a class="twitter" href="http://twitter.com/s5ot" title="Twitter">Twitter</a>
+    
+    
+    <a class="github" href="https://github.com/s5ot" title="GitHub">GitHub</a>
+    
+    -->
+    
+    
+    
+    
+    
+    
+    <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+    
+  </div>
+  <form class="search" action="http://google.com/search" method="get">
+    <input class="alignright" type="text" name="q" results="0">
+    <input type="hidden" name="q" value="site:s5ot.github.io">
+  </form>
+</nav>
+
+</header>
+  
+  
+  <div id="content" class="inner"><article class="post">
+	<h2 class="title">Flotでグラフを書いてみる</h2>
+	<div class="entry-content"><p><img src="/images/2014-02-13-flot/flot.jpg"></p>
+
+<p>データビジュアライゼーションが気になる今日この頃です。</p>
+
+<p><a href="http://wazanova.jp/items/881">D3.jsでグラフを描いてみる</a>
+を読んだのですが、割とシンプルなグラフなのにけっこう面倒くさいと感じました。<br/>
+まあD3.jsがグラフに特化してるわけでないからと思います。</p>
+
+<p>人気のKibanaを見たところ、グラフはjQueryベースのFlotで書いているようです。<br/>
+<a href="https://github.com/elasticsearch/kibana">elasticsearch / kibana</a><br/>
+というわけで、Flotを試してみようと思いました。</p>
+
+<p><a href="http://www.flotcharts.org/">Flot</a></p>
+
+<p>Examplesにあるこれを参考にしました。<br/>
+<a href="http://www.flotcharts.org/flot/examples/categories/index.html">Categories</a></p>
+
+<p>それっぽいものはすぐにできたのですが、<br/>
+<a href="https://gist.github.com/s5ot/8970149">s5ot / gist:8970149</a><br/>
+どうもFlotにはd3 transition APIのようなアニメーション向けのAPIがないようにお見受けしました。<br/>
+ちょっとそれをゴリゴリ書くのはキツいですね。。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-13T14:20:00+09:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2014/02/13/flot/#disqus_thread">Comments</a></div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+  <footer id="footer" class="inner">Copyright &copy; 2014
+
+    s5ot
+
+</footer>
+  <script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 's5ot';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://s5ot.github.io/blog/2014/02/13/flot/';
+        var disqus_url = 'http://s5ot.github.io/blog/2014/02/13/flot/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37441932-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2014-01-29T15:39:04+09:00</updated>
+  <updated>2014-02-13T14:38:55+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Flotでグラフを書いてみる]]></title>
+    <link href="http://s5ot.github.io/blog/2014/02/13/flot/"/>
+    <updated>2014-02-13T14:20:00+09:00</updated>
+    <id>http://s5ot.github.io/blog/2014/02/13/flot</id>
+    <content type="html"><![CDATA[<p><img src="http://s5ot.github.io/images/2014-02-13-flot/flot.jpg"></p>
+
+<p>データビジュアライゼーションが気になる今日この頃です。</p>
+
+<p><a href="http://wazanova.jp/items/881">D3.jsでグラフを描いてみる</a>
+を読んだのですが、割とシンプルなグラフなのにけっこう面倒くさいと感じました。<br/>
+まあD3.jsがグラフに特化してるわけでないからと思います。</p>
+
+<p>人気のKibanaを見たところ、グラフはjQueryベースのFlotで書いているようです。<br/>
+<a href="https://github.com/elasticsearch/kibana">elasticsearch / kibana</a><br/>
+というわけで、Flotを試してみようと思いました。</p>
+
+<p><a href="http://www.flotcharts.org/">Flot</a></p>
+
+<p>Examplesにあるこれを参考にしました。<br/>
+<a href="http://www.flotcharts.org/flot/examples/categories/index.html">Categories</a></p>
+
+<p>それっぽいものはすぐにできたのですが、<br/>
+<a href="https://gist.github.com/s5ot/8970149">s5ot / gist:8970149</a><br/>
+どうもFlotにはd3 transition APIのようなアニメーション向けのAPIがないようにお見受けしました。<br/>
+ちょっとそれをゴリゴリ書くのはキツいですね。。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RubyMotionアプリでStoryboardを使う（ibを使う）]]></title>
