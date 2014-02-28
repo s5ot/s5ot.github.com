@@ -7,8 +7,7 @@
 	<meta name="author" content="s5ot">
 
 	
-	<meta name="description" content="モリモリ盛り上がってるAngularJSのプロジェクトひな形を作ってくれるgenerator-angular でE2Eテストをするためのメモ。 $ yo angular でひな形をつくった時点で、 $ grunt test でユニットテストをすぐ実行することができる。
-が、 &hellip;">
+	<meta name="description" content="ローカルのRailsアプリディレクトリでとあるrakeタスクを実行する処理をCapistranoのタスクで実行したかったです。こういう感じです。 Capfiletask :korejikkou do run &lt;&lt;-CMD cd #{toaru_rails_dir} bundle &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -80,6 +79,82 @@
   
   
   <div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/11/29/bundle-exec-in-bundle-exec/">
+		
+			Capistranoタスクの中でbundle execする</a>
+	</h2>
+	<div class="entry-content">
+		<p>ローカルのRailsアプリディレクトリでとあるrakeタスクを実行する処理をCapistranoのタスクで実行したかったです。こういう感じです。</p>
+
+<figure class='code'><figcaption><span>Capfile</span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">task</span> <span class="ss">:korejikkou</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">run</span> <span class="o">&lt;&lt;-</span><span class="no">CMD</span>
+</span><span class='line'><span class="sh">    cd #{toaru_rails_dir}</span>
+</span><span class='line'><span class="sh">    bundle exec rake toaru</span>
+</span><span class='line'><span class="no">  CMD</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これを</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle <span class="nb">exec </span>cap
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>で実行すると、korejikkouの中のbundle execはcapコマンドを実行したディレクトリベースで動いてしまいます。。<br/>
+困った。<br/>
+こちらにあるように、bundle installには任意のGemfileを指定できるオプションがあるようですが、bundle exec にはないみたいです。<br/>
+<a href="http://blog.kyanny.me/entry/2012/04/25/074256">bundle のなかで bundle する</a></p>
+
+<p>が、bundlerではBUNDLE_GEMFILEという環境変数にGemfileの場所がセットされるらしく、これを書き換えると意図してたことができました。</p>
+
+<figure class='code'><figcaption><span>Capfile</span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">task</span> <span class="ss">:korejikkou</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">org_gemfile</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;BUNDLE_GEMFILE&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;BUNDLE_GEMFILE&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">toaru_rails_dir</span><span class="si">}</span><span class="s2">/Gemfile&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">run</span> <span class="o">&lt;&lt;-</span><span class="no">CMD</span>
+</span><span class='line'><span class="sh">    cd #{toaru_rails_dir}</span>
+</span><span class='line'><span class="sh">    bundle exec rake toaru</span>
+</span><span class='line'><span class="no">  CMD</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;BUNDLE_GEMFILE&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">org_gemfile</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  （あとで気づいたが、bundle install &#8211;gemfileしてからbundle exec すれば指定したGemfileが使われるんだろう。きっと）</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-29T13:58:00+09:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+		<div class="comments"><a href="/blog/2013/11/29/bundle-exec-in-bundle-exec//blog/page/2/index.html#disqus_thread">Comments</a></div>
+	
+</div></article>
 
 
     <article class="post">
