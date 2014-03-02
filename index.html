@@ -118,17 +118,16 @@
 
 <p>無限スクロールを表示する部分です。</p>
 
-<figure class='code'> <div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;content&#39;</span> <span class="na">when-scrolled=</span><span class="s">&#39;loadMore()&#39;</span><span class="nt">&gt;</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;content&#39;</span> <span class="na">when-scrolled=</span><span class="s">&#39;loadMore()&#39;</span><span class="nt">&gt;</span>
 </span><span class='line'><span class="nt">&lt;ul</span> <span class="na">ng-repeat=</span><span class="s">&#39;d in data&#39;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>{{d}}<span class="nt">&lt;/li&gt;</span>
 </span><span class='line'><span class="nt">&lt;/ul&gt;</span>
 </span><span class='line'><span class="nt">&lt;/div&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>dataという名前のコレクションをリスト表示しています。
-リストを囲っているdivにwhen-scrolledというディレクティブを指定しています。<br/>
-（liの中の値が消えてしまってますが、{{d}}と書いてます）</p>
+リストを囲っているdivにwhen-scrolledというディレクティブを指定しています。</p>
 
 <h3>Directive</h3>
 
@@ -192,8 +191,10 @@ loadMoreメソッドがコールされると、dataに25個追加します。<br
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h3>まとめ</h3>
+
 <p>データを増やせば自動でレンダリングされるので、jQueryなどで実装するよりコード量が減りますね。<br/>
-<a href="https://github.com/s5ot/angular-seed/tree/infinite-scroll">ここ</a>に実装置いときます。</p>
+<a href="https://github.com/s5ot/angular-seed/tree/infinite-scroll">ここ</a>に実装おいてます。</p>
 
 		
 		
