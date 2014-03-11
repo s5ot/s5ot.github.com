@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2014-03-02T10:56:35+09:00</updated>
+  <updated>2014-03-11T23:19:15+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[AngularJSで作業用BGM再生アプリを作りました]]></title>
+    <link href="http://s5ot.github.io/blog/2014/03/11/angular-app/"/>
+    <updated>2014-03-11T15:40:00+09:00</updated>
+    <id>http://s5ot.github.io/blog/2014/03/11/angular-app</id>
+    <content type="html"><![CDATA[<p><a href="http://s5ot.github.io/nagaretetter-client/"><img src="http://s5ot.github.io/images/2014-03-11-angularjs-app/angularjs-app.png"></a></p>
+
+<p>AngularJSの練習をしていたら作業用BGM再生アプリができました。 <br/>
+<a href="http://s5ot.github.io/nagaretetter-client/">ナガレテッター</a></p>
+
+<h3>どういうものか</h3>
+
+<p>J-WAVEで流れた曲がプレイリストになっています。<br/>
+プレイリストから曲をクリックすると、YouTubeにあるその曲の動画が流れます。</p>
+
+<h3>なぜ作ったか</h3>
+
+<p>AngularJSの勉強のため。<br/>
+新しい曲・名曲を知るきっかけになるのがラジオであることが多いです（個人的に）。なのでそのきっかけが広がるものを作りたいと思ったため。</p>
+
+<h3>仕組みは</h3>
+
+<p>HerokuのClock ProcessでJ-WAVEで流れた曲を取ってきて定期的にMongoDB（MongoLab）に保存しています。<br/>
+さらにHerokuにRailsでAPIサーバーを立てて、MongoDBのデータを返します。<br/>
+クライアントはYeomanのgenerator-angularを元にして作りました。これをGitHub Pagesにデプロイしてます。<br/>
+YouTube再生の内部的な仕組みはyusukebeさん作の<a href="http://yusukebe.github.io/FMTube/">FMTube</a>の実装を参考にさせてもらいました。勉強になります。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[AngularJSで無限スクロール]]></title>
@@ -1003,15 +1032,6 @@ WillPaginate::ViewHelpers.pagination_options[:renderer] = &#39;BootstrapLinkRend
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[はじめまして]]></title>
-    <link href="http://s5ot.github.io/blog/2013/01/05/hazimemasite/"/>
-    <updated>2013-01-05T23:11:00+09:00</updated>
-    <id>http://s5ot.github.io/blog/2013/01/05/hazimemasite</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
