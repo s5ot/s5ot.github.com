@@ -4,7 +4,7 @@
   <title><![CDATA[s5ot.send(:blog)]]></title>
   <link href="http://s5ot.github.io/atom.xml" rel="self"/>
   <link href="http://s5ot.github.io/"/>
-  <updated>2014-03-11T23:19:15+09:00</updated>
+  <updated>2014-03-11T23:23:45+09:00</updated>
   <id>http://s5ot.github.io/</id>
   <author>
     <name><![CDATA[s5ot]]></name>
@@ -35,7 +35,7 @@
 
 <h3>仕組みは</h3>
 
-<p>HerokuのClock ProcessでJ-WAVEで流れた曲を取ってきて定期的にMongoDB（MongoLab）に保存しています。<br/>
+<p>HerokuのClock ProcessでJ-WAVEで流れた曲を定期的に取ってきてMongoDB（MongoLab）に保存しています。<br/>
 さらにHerokuにRailsでAPIサーバーを立てて、MongoDBのデータを返します。<br/>
 クライアントはYeomanのgenerator-angularを元にして作りました。これをGitHub Pagesにデプロイしてます。<br/>
 YouTube再生の内部的な仕組みはyusukebeさん作の<a href="http://yusukebe.github.io/FMTube/">FMTube</a>の実装を参考にさせてもらいました。勉強になります。</p>
